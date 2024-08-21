@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Paper, Typography, Button, Avatar, Grid } from '@mui/material';
+import { Box, Paper, Typography, Button, Avatar, Grid, Divider} from '@mui/material';
 import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
 import SendIcon from '@mui/icons-material/Send';
 import CommentIcon from '@mui/icons-material/Comment';
@@ -37,16 +37,16 @@ const Feed = () => {
               <br />
               {post.content}
             </Typography>
-            
+            <Divider variant="middle" sx={{ my: 2 }} />
             <Grid container>
               <Grid item xs={4}>
-                <Button variant="text" color="primary"><ThumbUpOffAltIcon />Like</Button>
+                <Button variant="text" color="primary"><ThumbUpOffAltIcon /></Button>
               </Grid>
               <Grid item xs={4}>
-                <Button variant="text" color="primary"><CommentIcon />Comment</Button>
+                <Button variant="text" color="primary"><CommentIcon /></Button>
               </Grid>
               <Grid item xs={4} container justifyContent="flex-end">
-                <Button variant="text" color="primary"><SendIcon />Share</Button>
+                <Button variant="text" color="primary"><SendIcon /></Button>
               </Grid>
             </Grid>
           </Paper>

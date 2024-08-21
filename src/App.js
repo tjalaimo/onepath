@@ -6,6 +6,7 @@ import Sidebar from './components/Sidebar';
 import HealthNews from './components/HealthNews';
 import Briefcase from './pages/Briefcase';
 import Feed from './pages/Feed';
+import Home from './pages/Home';
 import Networks from './pages/Networks';
 import NetworkPage from './pages/NetworkPage';
 import Providers from './pages/Providers';
@@ -25,9 +26,9 @@ function App() {
           </Grid>
         )}
 
-        <Grid item xs={12} md={7}>
-          {/* Main content area */}
+        <Grid item xs={12} md={7}>        
           <Routes>
+            <Route path="" element={<Home />} />
             <Route path="/briefcase" element={<Briefcase />} />
             <Route path="/feed" element={<Feed />} />
             <Route path="/networks" element={<Networks />} />
