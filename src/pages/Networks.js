@@ -1,26 +1,67 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Grid, Typography, Paper, Button } from '@mui/material';
+import { Box, Avatar, AvatarGroup, Typography, Button, Card, CardContent, Grid } from '@mui/material';
 
+// Example network data
 const networks = [
-  { id: 1, name: 'Chronic Illness Support Group' },
-  { id: 2, name: 'Fitness Enthusiasts' },
+  {
+    id: 1,
+    name: 'Alaimo Family',
+    avatar: 'https://i.pravatar.cc/50?img=3',
+    members: [
+      { name: 'Alice', avatar: 'https://i.pravatar.cc/50?img=1' },
+      { name: 'Bob', avatar: 'https://i.pravatar.cc/50?img=2' },
+      { name: 'Carol', avatar: 'https://i.pravatar.cc/50?img=3' },
+    ],
+    description: 'My family\'s network of doctors and events to keep track of our lives.',
+  },
+  {
+    id: 2,
+    name: 'Mom and Dad',
+    avatar: 'https://i.pravatar.cc/150?',
+    members: [
+      { name: 'Dave', avatar: 'https://i.pravatar.cc/50?img=4' },
+      { name: 'Eve', avatar: 'https://i.pravatar.cc/50?img=2' },
+    ],
+    description: 'A network with my parents so I can stay on top of their care even when they cannot.',
+  },
 ];
 
-const Networks = () => {
-  const navigate = useNavigate();
-  return (
-    <Grid container justifyContent="center">
-      <Grid item xs={10}>
-        {networks.map((network) => (
-          <Paper key={network.id} sx={{ padding: 2, marginBottom: 2 }}>
-            <Typography variant="h6">{network.name}</Typography>
-            <Button variant="contained" color="primary" sx={{ marginTop: 1 }} onClick={ () => {navigate('/network')}}>View</Button>
-          </Paper>
+const NetworkCard = ({ network }) => (
+  <Card sx={{ marginBottom: 4 }}>
+    <CardContent>
+      <Box sx={{ display: 'flex', alignItems: 'center', marginBottom: 2 }}>
+        <Avatar src={network.avatar} sx={{ width: 80, height: 80, marginRight: 2 }} />
+        <Typography variant="h6">{network.name}</Typography>
+      </Box>
+      <AvatarGroup max={4}>
+        {network.members.map((member, index) => (
+          <Avatar key={index} alt={member.name} src={member.avatar} />
         ))}
-      </Grid>
+      </AvatarGroup>
+      <Typography variant="body1" sx={{ marginY: 2 }}>
+        {network.description}
+      </Typography>
+      <Button variant="contained" color="primary" sx={{ marginRight: 2 }}>
+        View Network
+      </Button>
+      <Button variant="outlined" color="secondary" sx={{ marginRight: 2 }}>
+        Edit Network
+      </Button>
+      <Button variant="text" color="error">
+        Leave Network
+      </Button>
+    </CardContent>
+  </Card>
+);
+
+const Networks = () => (
+  <Grid container spacing={2} justifyContent="center">
+    <Grid item xs={10}>
+      {networks.map((network) => (
+        <NetworkCard key={network.id} network={network} />
+      ))}
     </Grid>
-  );
-};
+  </Grid>
+);
 
 export default Networks;

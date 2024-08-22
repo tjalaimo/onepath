@@ -26,13 +26,13 @@ const HelpPage = () => {
             <List>
               {helpSections.map((item, index) => (
                 <Box key={index}>
-                <ListItem button component="a" href={'#'}>
-                  {item.icon}
-                  <Box sx={{ ml:2 }}>
-                    <Typography variant="subtitle1">{item.label}</Typography>
-                  </Box>
-                </ListItem>
-                <Divider variant="middle" />
+                  <ListItem button component="a" href={'#'}>
+                    {item.icon}
+                    <Box sx={{ ml:2 }}>
+                      <Typography variant="subtitle1">{item.label}</Typography>
+                    </Box>
+                  </ListItem>
+                  <Divider variant="middle" />
                 </Box> 
               ))}
             </List>

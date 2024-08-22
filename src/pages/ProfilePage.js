@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams } from 'react-router';
-import { Box, Typography, Avatar, Button, Chip, Grid, Card, CardContent } from '@mui/material';
+import { Box, Typography, Avatar, Button, Chip, Grid, Card, CardContent, useMediaQuery } from '@mui/material';
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
 import GroupAddIcon from '@mui/icons-material/GroupAdd';
 
@@ -17,12 +17,10 @@ const userProfile = {
   medications: ['Metformin', 'Lisinopril', 'Advil', 'Coffee'],
 };
 
-
-
-
 const ProfilePage = (id) => {
   const params= useParams()
-  const isConnected = params.id === '1';     
+  const isConnected = params.id === '1';
+  const isXSmallScreen = useMediaQuery((theme) =>  theme.breakpoints.down('md'));
 
   return (
     <Grid container spacing={2} justifyContent="center">
@@ -43,11 +41,11 @@ const ProfilePage = (id) => {
                 <Box sx={{ marginLeft: 'auto' }}>
                 <Button variant="contained" color="primary" sx={{ marginRight: 2 }}>
                   <ChatBubbleOutlineIcon sx={{ mr: 1 }} />
-                  Message
+                  {!isXSmallScreen ? 'Message' : ''}
                 </Button>
                 <Button variant="outlined" color="secondary">
                   <GroupAddIcon sx={{ mr: 1 }} />
-                  Add to Network
+                  {!isXSmallScreen ? 'Connect' : ''}
                 </Button>
                 </Box>
             </Box>
