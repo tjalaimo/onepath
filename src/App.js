@@ -11,6 +11,14 @@ import Networks from './pages/Networks';
 import NetworkPage from './pages/NetworkPage';
 import Providers from './pages/Providers';
 import LoginForm from './pages/LoginForm';
+import MessagesPage from './pages/MessagesPage';
+import ConversationPage from './pages/ConversationPage';
+import NotificationsPage from './pages/NotificationsPage';
+import SettingsPage from './pages/SettingsPage';
+import CalendarPage from './pages/CalendarPage';
+import EventDetails from './pages/EventDetails';
+import HelpPage from './pages/HelpPage';
+
 
 function App() {
   const isSmallScreen = useMediaQuery((theme) => theme.breakpoints.down('md'));
@@ -35,6 +43,13 @@ function App() {
             <Route path="/providers" element={<Providers />} />
             <Route path="/network" element={<NetworkPage />} />
             <Route path="/login" element={<LoginForm />} />
+            <Route path="/messages" element={<MessagesPage />} />
+            <Route path="/messages/:id" element={<ConversationPage />} />
+            <Route path="/notifications" element={<NotificationsPage />} />
+            <Route path="/settings" element={<SettingsPage />} />
+            <Route path="/calendar" element={<CalendarPage />} />
+            <Route path="/event" element={<EventDetails />} />
+            <Route path="/help" element={<HelpPage />} />
           </Routes>
         </Grid>
 
