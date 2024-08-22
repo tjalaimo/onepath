@@ -18,7 +18,7 @@ import SettingsPage from './pages/SettingsPage';
 import CalendarPage from './pages/CalendarPage';
 import EventDetails from './pages/EventDetails';
 import HelpPage from './pages/HelpPage';
-
+import ProfilePage from './pages/ProfilePage';
 
 function App() {
   const isSmallScreen = useMediaQuery((theme) => theme.breakpoints.down('md'));
@@ -49,7 +49,8 @@ function App() {
             <Route path="/settings" element={<SettingsPage />} />
             <Route path="/calendar" element={<CalendarPage />} />
             <Route path="/event" element={<EventDetails />} />
-            <Route path="/help" element={<HelpPage />} />            
+            <Route path="/help" element={<HelpPage />} />     
+            <Route path="/profile/:id" element={<ProfilePage />} />   
           </Routes>
         </Grid>
 

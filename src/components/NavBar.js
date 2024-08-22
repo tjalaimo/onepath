@@ -118,7 +118,9 @@ const NavBar = () => {
         >
           <Box sx={{ width: 250 }}>
             <Box sx={{ p: 2 }}>
-              <Avatar alt="Remy Sharp" src="https://i.pravatar.cc/150?img=3" />              
+              <IconButton onClick={() => { navigate('/profile/1'); setOpenMenu(false); }}>
+                <Avatar alt="Remy Sharp" src="https://i.pravatar.cc/150?img=3"  />              
+              </IconButton>
             </Box>
             <List>
               {navLinks.map((link) => (

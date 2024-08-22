@@ -1,7 +1,7 @@
 import React from 'react';
 import { Typography, Grid, Paper } from '@mui/material';
 import HealthNews from '../components/HealthNews';
-import Feed from './Feed';
+import UserFeed from '../components/UserFeed';
 
 
 const Home = () => {
@@ -22,7 +22,7 @@ const Home = () => {
             <Typography variant="h6" gutterBottom>
               New posts
             </Typography>
-            <Feed />
+            <UserFeed />
           </Paper>          
       </Grid>
     </Grid>
