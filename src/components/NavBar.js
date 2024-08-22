@@ -13,6 +13,7 @@ import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import SettingsIcon from '@mui/icons-material/Settings';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
+import NotificationsIcon from '@mui/icons-material/Notifications';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { useNavigate } from 'react-router-dom';
 
@@ -30,8 +31,9 @@ const NavBar = () => {
   ];
 
   const secondaryNavLinks = [
-    { label: 'Messages', icon: <ChatBubbleOutlineIcon />, path: '/messages' }, 
-    { label: 'MyHealth', icon: <MedicalInformationIcon  />, path: '/' },
+    { label: 'Notification', count: 2, icon: <NotificationsIcon />, path: '/notifications' }, 
+    { label: 'Messages', count: 2, icon: <ChatBubbleOutlineIcon />, path: '/messages' }, 
+    { label: 'MyHealth', count: 0, icon: <MedicalInformationIcon  />, path: '/' },
     { label: 'Shared Calendar', icon: <CalendarMonthIcon />, path: '/calendar' },
   ]
  
@@ -76,11 +78,12 @@ const NavBar = () => {
                   <Badge
                     overlap="circular"
                     anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+                    color="secondary"
                     badgeContent={
                       <ExpandMoreIcon />
                     }
                   >
-                    <Avatar alt="Travis Howard" src="/static/images/avatar/2.jpg" />
+                    <Avatar alt="Travis Howard" src="https://i.pravatar.cc/150?img=3" />
                   </Badge>
                 </IconButton>
               </Box>
@@ -115,7 +118,7 @@ const NavBar = () => {
         >
           <Box sx={{ width: 250 }}>
             <Box sx={{ p: 2 }}>
-              <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+              <Avatar alt="Remy Sharp" src="https://i.pravatar.cc/150?img=3" />              
             </Box>
             <List>
               {navLinks.map((link) => (
@@ -133,10 +136,14 @@ const NavBar = () => {
             <List>
               {secondaryNavLinks.map((link) => (
                 <ListItem key={link.label} disablePadding>
-                  <ListItemButton onClick={() => { navigate(link.path); setOpenMenu(false); }}>
-                    <ListItemIcon>
-                      {link.icon}
-                    </ListItemIcon>
+                  <ListItemButton onClick={() => { navigate(link.path); setOpenMenu(false); }}>                    
+                      <ListItemIcon>
+                        <IconButton aria-label={link.count}>
+                          <Badge badgeContent={link.count} color="primary">
+                            {link.icon}
+                          </Badge>
+                        </IconButton>
+                      </ListItemIcon>
                     <ListItemText primary={link.label} />
                   </ListItemButton>
                 </ListItem>

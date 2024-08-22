@@ -1,5 +1,5 @@
 import React from 'react';
-import { List, ListItem, ListItemIcon, ListItemText, Box, Typography, Avatar } from '@mui/material';
+import { List, ListItem, ListItemIcon, ListItemText, Box, Typography, Grid, Paper } from '@mui/material';
 import EventIcon from '@mui/icons-material/Event';
 import GroupIcon from '@mui/icons-material/Group';
 import MessageIcon from '@mui/icons-material/Message';
@@ -30,26 +30,36 @@ const notifications = [
 
 const NotificationsPage = () => {
   return (
-    <Box sx={{ padding: 3 }}>
-      <Typography variant="h6" gutterBottom>
-        Notifications
-      </Typography>
-      <List>
-        {notifications.map((notification) => (
-          <ListItem key={notification.id} button sx={{ marginBottom: 2, borderRadius: '12px', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)' }}>
-            <ListItemIcon>{notification.icon}</ListItemIcon>
-            <ListItemText
-              primary={notification.message}
-              secondary={
-                <Typography variant="caption" color="textSecondary">
-                  {notification.timestamp}
-                </Typography>
-              }
-            />
-          </ListItem>
-        ))}
-      </List>
-    </Box>
+    <Grid container spacing={2} justifyContent="center">
+      <Grid item xs={10}>
+        <Paper 
+          sx={{ 
+            padding: 3, 
+            marginBottom: 2, 
+            borderRadius: '12px', 
+            boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)' 
+          }}
+        >
+          <Box sx={{ padding: 3 }}>
+            <List>
+              {notifications.map((notification) => (
+                <ListItem key={notification.id} button sx={{ marginBottom: 2, borderRadius: '12px', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)' }}>
+                  <ListItemIcon>{notification.icon}</ListItemIcon>
+                  <ListItemText
+                    primary={notification.message}
+                    secondary={
+                      <Typography variant="caption" color="textSecondary">
+                        {notification.timestamp}
+                      </Typography>
+                    }
+                  />
+                </ListItem>
+              ))}
+            </List>
+          </Box>
+        </Paper>
+      </Grid>
+    </Grid>
   );
 };
 

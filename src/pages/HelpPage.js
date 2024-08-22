@@ -3,10 +3,10 @@ import { List, ListItem, ListItemText, Typography, Container, Box, Grid, Paper }
 
 const helpSections = [
   { title: 'FAQ', link: '/faq' },
-  { title: 'Company Overview', link: '/company-overview' },
-  { title: 'Contact Support', link: '/contact-support' },
-  { title: 'User Guide', link: '/user-guide' },
-  { title: 'Terms of Service', link: '/terms' }
+  { title: 'Company Overview', link: '#' },
+  { title: 'Contact Support', link: '#' },
+  { title: 'User Guide', link: '#' },
+  { title: 'Terms of Service', link: '#' }
 ];
 
 const HelpPage = () => {
@@ -22,7 +22,10 @@ const HelpPage = () => {
           }}
         >
           <Container>
-            <Box sx={{ paddingTop: 4 }}>
+            <Typography variant="h6" gutterBottom>
+              Help
+            </Typography>
+            <Box sx={{  }}>
               <List>
                 {helpSections.map((section, index) => (
                   <ListItem key={index} button component="a" href={section.link}>

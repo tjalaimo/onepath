@@ -49,7 +49,7 @@ function App() {
             <Route path="/settings" element={<SettingsPage />} />
             <Route path="/calendar" element={<CalendarPage />} />
             <Route path="/event" element={<EventDetails />} />
-            <Route path="/help" element={<HelpPage />} />
+            <Route path="/help" element={<HelpPage />} />            
           </Routes>
         </Grid>
 
