@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { AppBar, Toolbar, Typography, SwipeableDrawer, IconButton, useMediaQuery, Box, Grid, Divider, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Badge } from '@mui/material';
+import { AppBar, Toolbar, Typography, SwipeableDrawer, CardActionArea, IconButton, useMediaQuery, Box, Grid, Divider, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Badge } from '@mui/material';
 import HomeIcon from '@mui/icons-material/Home';
 import MedicalServicesIcon from '@mui/icons-material/MedicalServices';
 import FeedIcon from '@mui/icons-material/Feed';
@@ -50,21 +50,21 @@ const NavBar = () => {
         { !isXSmallScreen ? (
           <Grid container spacing={2} sx={{ }}>
             <Grid item xs={2}>
-              <Box sx={{ }}>
+              <CardActionArea onClick={() => { navigate('/'); }}>
                 <Typography variant="h6">
                 OnePath
                 </Typography>
-              </Box>
+              </CardActionArea>
             </Grid>        
           
             <Grid item xs={8}>
               <Box display="flex" gap={5} sx={{ width: '100%', mx: 'auto' }}>
                   {navLinks.map((link) => (
                       <IconButton
-                      key={link.label}
-                      color="inherit"
-                      onClick={() => navigate(link.path)}
-                      aria-label={link.label}                    
+                        key={link.label}
+                        color="inherit"
+                        onClick={() => navigate(link.path)}
+                        aria-label={link.label}                    
                       >
                       {link.icon}
                       </IconButton>

@@ -41,7 +41,7 @@ function App() {
             <Route path="/feed" element={<Feed />} />
             <Route path="/networks" element={<Networks />} />
             <Route path="/providers" element={<ProvidersPage />} />
-            <Route path="/network" element={<NetworkPage />} />
+            <Route path="/network/:id" element={<NetworkPage />} />
             <Route path="/login" element={<LoginForm />} />
             <Route path="/messages" element={<MessagesPage />} />
             <Route path="/messages/:id" element={<ConversationPage />} />

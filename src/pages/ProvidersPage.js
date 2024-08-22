@@ -78,7 +78,7 @@ const ProviderCard = ({ provider }) => {
             <Box sx={{ display: 'flex', alignItems: 'center' }}>
               <Rating value={provider.rating} precision={0.1} readOnly />
               <Typography variant="body2" sx={{ marginLeft: 1 }}>
-                ({provider.reviewCount} reviews)
+                ({provider.reviewCount})
               </Typography>
             </Box>
           </Box>
