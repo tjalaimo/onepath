@@ -31,8 +31,8 @@ const HealthNews = () => {
         </Typography>
         <List>
           {articles.map((article, index) => (
-            <>
-              <ListItem key={index} button component="a" href={article.link}>
+            <Box key={index}>
+              <ListItem button component="a" href={article.link}>
                 <CardMedia
                   component="img"
                   image={article.image}
@@ -47,7 +47,7 @@ const HealthNews = () => {
                 </Box>
               </ListItem>
               <Divider variant="middle" component="li" />
-            </>
+            </Box>
           ))}
         </List>
       </CardContent>
