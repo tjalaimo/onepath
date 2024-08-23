@@ -5,9 +5,6 @@ import CommentIcon from '@mui/icons-material/Comment';
 import ShareIcon from '@mui/icons-material/Share';
 
 const Post = ({ post }) => {
-
-  console.log(post);
-  
   return (
     <Card sx={{ marginBottom: 2 }}>
       <CardHeader

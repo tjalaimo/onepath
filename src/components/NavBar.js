@@ -15,6 +15,7 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import LogoutIcon from '@mui/icons-material/Logout';
+import AssistantIcon from '@mui/icons-material/Assistant';
 import { useNavigate } from 'react-router-dom';
 
 const NavBar = () => {
@@ -24,6 +25,7 @@ const NavBar = () => {
 
   const navLinks = [
     { label: 'Home', icon: <HomeIcon />, path: '/' },
+   // { label: 'AI Assisstant', icon: <AssistantIcon />, path: '/assistant' },
     { label: 'Briefcase', icon: <MedicalServicesIcon />, path: '/briefcase' },
     { label: 'Feed', icon: <FeedIcon />, path: '/feed' },
     { label: 'Networks', icon: <GroupIcon />, path: '/networks' },
@@ -33,7 +35,7 @@ const NavBar = () => {
   const secondaryNavLinks = [
     { label: 'Notification', count: 2, icon: <NotificationsIcon />, path: '/notifications' }, 
     { label: 'Messages', count: 2, icon: <ChatBubbleOutlineIcon />, path: '/messages' }, 
-    { label: 'MyHealth', count: 0, icon: <MedicalInformationIcon  />, path: '/' },
+    { label: 'MyHealth', count: 0, icon: <MedicalInformationIcon  />, path: '/myhealth' },
     { label: 'Shared Calendar', icon: <CalendarMonthIcon />, path: '/calendar' },
   ]
  
