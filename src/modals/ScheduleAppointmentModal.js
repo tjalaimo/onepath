@@ -30,7 +30,7 @@ const ScheduleAppointmentModal = ({ open, onClose, patient }) => {
 
   return (
     <Modal open={open} onClose={onClose}>
-      <Box sx={{ width: 500, bgcolor: 'background.paper', p: 4, mx: 'auto', mt: 10, borderRadius: 2 }}>
+      <Box sx={{ width: '90%', bgcolor: 'background.paper', p: 4, mx: 'auto', mt: 10, borderRadius: 2 }}>
         <Typography variant="h6" mb={2}>Schedule Appointment</Typography>
 
         {/* Calendar Component */}
