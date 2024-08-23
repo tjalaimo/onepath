@@ -21,6 +21,7 @@ import HelpPage from './pages/HelpPage';
 import ProfilePage from './pages/ProfilePage';
 import MyHealth from './pages/MyHealth';
 import AIAssistant from './pages/AIAssistant';
+import ProviderHome from './pages/ProviderHome';
 
 function App() {
   const isSmallScreen = useMediaQuery((theme) => theme.breakpoints.down('md'));
@@ -54,7 +55,10 @@ function App() {
             <Route path="/calendar" element={<CalendarPage />} />
             <Route path="/event" element={<EventDetails />} />
             <Route path="/help" element={<HelpPage />} />     
-            <Route path="/profile/:id" element={<ProfilePage />} />   
+            <Route path="/profile/:id" element={<ProfilePage />} />
+
+            {/* provider specific */}
+            <Route path="/provider/home" element={<ProviderHome />} />
           </Routes>
         </Grid>
 
