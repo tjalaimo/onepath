@@ -24,6 +24,9 @@ import AIAssistant from './pages/AIAssistant';
 import ProviderHome from './pages/ProviderHome';
 import PatientList from './pages/PatientList';
 import PatientDetails from './pages/PatientDetails';
+import ForumsPage from './pages/ForumsPage';
+import ForumPage from './pages/ForumPage';
+import ForumPostPage from './pages/ForumPostPage';
 
 import { AuthProvider } from './context/AuthContext';
 
@@ -66,6 +69,9 @@ function App() {
               <Route  path="/provider/patientlist" element={<PatientList />} />
               <Route  path="/provider/patient/:id" element={<PatientDetails />} />
               <Route path="/provider/documents" element={<BriefcasePage />} />
+              <Route path="/provider/forums" element={<ForumsPage />} />
+              <Route path="/provider/forum/:id" element={<ForumPage />} />
+              <Route path="/provider/forum/post/:id" element={<ForumPostPage />} />
             </Routes>
           </Grid>
 

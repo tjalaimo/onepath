@@ -41,7 +41,7 @@ const NavBar = () => {
     // { label: 'AI Assisstant', icon: <AssistantIcon />, path: '/assistant' },
       { label: 'Documents', icon: <MedicalServicesIcon />, path: '/provider/documents' },
       { label: 'Feed', icon: <FeedIcon />, path: '/feed' },
-      { label: 'Forums', icon: <GroupIcon />, path: '/networks' },
+      { label: 'Forums', icon: <GroupIcon />, path: '/provider/forums' },
       { label: 'Patients', icon: <DirectionsRunIcon />, path: '/provider/patientlist' }
     ]);
 
