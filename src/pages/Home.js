@@ -1,10 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Typography, Grid, Paper } from '@mui/material';
 import HealthNews from '../components/HealthNews';
 import UserFeed from '../components/UserFeed';
+import { useAuth } from '../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 
 const Home = () => {
+  const { user } = useAuth(); 
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (user && user.role === 'provider') {
+      navigate('/provider/home');
+    }
+  }, [user, navigate]);
+
   return (
     <Grid container spacing={2} justifyContent="center">
       <Grid item xs={10}>

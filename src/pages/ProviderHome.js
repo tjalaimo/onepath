@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Box, Grid, Card, CardContent, Typography, Button, Dialog, DialogTitle, DialogContent, TextField, Pagination, InputAdornment, useMediaQuery } from '@mui/material';
 import { Calendar, momentLocalizer } from 'react-big-calendar';
 import moment from 'moment';
@@ -9,12 +9,25 @@ import KeyIcon from '@mui/icons-material/Key';
 import NoteAddIcon from '@mui/icons-material/NoteAdd';
 import DirectionsRunIcon from '@mui/icons-material/DirectionsRun';
 import { useTheme  } from '@mui/material';
+import { useAuth } from '../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
+
+import AccessCodesModal from '../modals/AccessCodesModal';
+import CreatePostModal from '../modals/CreatePostModal';
 
 const localizer = momentLocalizer(moment);
 
 const ProviderHome = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const { user } = useAuth(); 
+  const navigate = useNavigate();  
+
+  useEffect(() => {
+    if (user && user.role === 'provider') {
+      navigate('/provider/home');
+    }
+  }, [user, navigate]);
 
   // Sample data for incoming requests
   const allRequests = [
@@ -63,20 +76,28 @@ const ProviderHome = () => {
     setCurrentPage(value);
   };
 
-  // State for Post dialog
-  const [openPostDialog, setOpenPostDialog] = useState(false);
-  const [postText, setPostText] = useState('');
-  const [postImage, setPostImage] = useState(null);
+  const [openAccessCodeModal, setOpenAccessCodeModal] = useState(false);
 
-  // Open/Close Post dialog handlers
-  const handleOpenPostDialog = () => setOpenPostDialog(true);
-  const handleClosePostDialog = () => setOpenPostDialog(false);
-
-  // Post submission handler
-  const handlePostSubmit = () => {
-    console.log('Post submitted:', postText, postImage);
-    handleClosePostDialog();
+  const handleOpenAccessCodeModal = () => {
+    setOpenAccessCodeModal(true);
   };
+
+  // Function to close the modal
+  const handleCloseAccessCodeModal = () => {
+    setOpenAccessCodeModal(false);
+  };
+
+  const [openCreatePostModal, setOpenCreatePostModal] = useState(false);
+
+  const handleOpenCreatePostModal = () => {
+    setOpenCreatePostModal(true);
+  };
+
+  // Function to close the modal
+  const handleCloseCreatePostModal = () => {
+    setOpenCreatePostModal(false);
+  };
+  
 
   return (
     <Box sx={{ px: 4, mb: 4 }}>
@@ -91,16 +112,16 @@ const ProviderHome = () => {
                     Action Items
                     </Typography>
 
-                    <Button variant="contained" color="primary" onClick={handleOpenPostDialog}>
+                    <Button variant="contained" color="primary" onClick={handleOpenCreatePostModal}>
                         <PostAddIcon />{!isMobile ? 'Post' : ''}
                     </Button>
-                    <Button variant="contained" color="secondary" sx={{ marginLeft: 2 }}>
+                    <Button variant="contained" color="secondary" sx={{ marginLeft: 1 }} onClick={handleOpenAccessCodeModal}>
                         <KeyIcon />{!isMobile ? 'Access Code' : ''}
                     </Button>
-                    <Button variant="contained" color="info" sx={{ marginLeft: 2 }}>
+                    <Button variant="contained" color="info" sx={{ marginLeft: 1 }} onClick={ () => { navigate('/briefcase') }} >
                         <NoteAddIcon />{!isMobile ? 'Documents' : ''}
                     </Button>
-                    <Button variant="contained" color="success" sx={{ marginLeft: 2 }}>
+                    <Button variant="contained" color="success" sx={{ marginLeft: 1 }} onClick={ () => { navigate('/provider/patientlist') }}>
                         <DirectionsRunIcon />{!isMobile ? 'Patients' : ''}
                     </Button>
                 </CardContent>
@@ -174,34 +195,8 @@ const ProviderHome = () => {
 
       </Grid>
 
-      {/* Make a Post Dialog */}
-      <Dialog open={openPostDialog} onClose={handleClosePostDialog} maxWidth="sm" fullWidth>
-        <DialogTitle>Make a Post</DialogTitle>
-        <DialogContent>
-          <TextField
-            fullWidth
-            label="What's on your mind?"
-            multiline
-            rows={4}
-            value={postText}
-            onChange={(e) => setPostText(e.target.value)}
-            margin="dense"
-          />
-          <Button variant="outlined" component="label" sx={{ marginTop: 2 }}>
-            Upload Image
-            <input type="file" hidden onChange={(e) => setPostImage(e.target.files[0])} />
-          </Button>
-          {postImage && <Typography variant="body2">Image: {postImage.name}</Typography>}
-          <Box sx={{ marginTop: 2 }}>
-            <Button variant="contained" onClick={handlePostSubmit} color="primary">
-              Submit
-            </Button>
-            <Button variant="text" onClick={handleClosePostDialog} sx={{ marginLeft: 2 }}>
-              Cancel
-            </Button>
-          </Box>
-        </DialogContent>
-      </Dialog>
+      <AccessCodesModal open={openAccessCodeModal} onClose={handleCloseAccessCodeModal} />
+      <CreatePostModal open={openCreatePostModal} onClose={handleCloseCreatePostModal} />
     </Box>
   );
 };

@@ -14,28 +14,43 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import SettingsIcon from '@mui/icons-material/Settings';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import NotificationsIcon from '@mui/icons-material/Notifications';
+import DirectionsRunIcon from '@mui/icons-material/DirectionsRun';
 import LogoutIcon from '@mui/icons-material/Logout';
 import AssistantIcon from '@mui/icons-material/Assistant';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 
 const NavBar = () => {
+  const { user } = useAuth(); 
   const isXSmallScreen = useMediaQuery((theme) =>  theme.breakpoints.down('sm'));
   const navigate = useNavigate();
   const [openMenu, setOpenMenu] = useState(false);
 
-  const navLinks = [
-    { label: 'Home', icon: <HomeIcon />, path: '/' },
-   // { label: 'AI Assisstant', icon: <AssistantIcon />, path: '/assistant' },
-    { label: 'Briefcase', icon: <MedicalServicesIcon />, path: '/briefcase' },
-    { label: 'Feed', icon: <FeedIcon />, path: '/feed' },
-    { label: 'Networks', icon: <GroupIcon />, path: '/networks' },
-    { label: 'Providers', icon: <LocalHospitalIcon />, path: '/providers' }
-  ];
+  const navLinks = user && user.role === 'provider' ? [
+      { label: 'Home', icon: <HomeIcon />, path: '/' },
+    // { label: 'AI Assisstant', icon: <AssistantIcon />, path: '/assistant' },
+      { label: 'Briefcase', icon: <MedicalServicesIcon />, path: '/briefcase' },
+      { label: 'Feed', icon: <FeedIcon />, path: '/feed' },
+      { label: 'Networks', icon: <GroupIcon />, path: '/networks' },
+      { label: 'Providers', icon: <LocalHospitalIcon />, path: '/providers' }
+    ] : [
+      { label: 'Home', icon: <HomeIcon />, path: '/provider/home' },
+    // { label: 'AI Assisstant', icon: <AssistantIcon />, path: '/assistant' },
+      { label: 'Documents', icon: <MedicalServicesIcon />, path: '/provider/documents' },
+      { label: 'Feed', icon: <FeedIcon />, path: '/feed' },
+      { label: 'Forums', icon: <GroupIcon />, path: '/networks' },
+      { label: 'Patients', icon: <DirectionsRunIcon />, path: '/providers' }
+    ]
+  ;
 
-  const secondaryNavLinks = [
+  const secondaryNavLinks = user && user.role === 'provider' ?  [
     { label: 'Notification', count: 2, icon: <NotificationsIcon />, path: '/notifications' }, 
     { label: 'Messages', count: 2, icon: <ChatBubbleOutlineIcon />, path: '/messages' }, 
     { label: 'MyHealth', count: 0, icon: <MedicalInformationIcon  />, path: '/myhealth' },
+    { label: 'Shared Calendar', icon: <CalendarMonthIcon />, path: '/calendar' },
+  ] : [
+    { label: 'Notification', count: 2, icon: <NotificationsIcon />, path: '/notifications' }, 
+    { label: 'Messages', count: 2, icon: <ChatBubbleOutlineIcon />, path: '/messages' },     
     { label: 'Shared Calendar', icon: <CalendarMonthIcon />, path: '/calendar' },
   ]
  

@@ -35,18 +35,18 @@ const ProfilePage = (id) => {
                 sx={{ width: 100, height: 100, marginRight: 2 }}
                 />
                 <Box>
-                <Typography variant="h5">{userProfile.name}</Typography>
-                <Typography variant="subtitle1">{userProfile.profession}</Typography>
+                  <Typography variant="h5">{userProfile.name}</Typography>
+                  <Typography variant="subtitle1">{userProfile.profession}</Typography>
                 </Box>
                 <Box sx={{ marginLeft: 'auto' }}>
-                <Button variant="contained" color="primary" sx={{ marginRight: 2 }}>
-                  <ChatBubbleOutlineIcon sx={{ mr: 1 }} />
-                  {!isXSmallScreen ? 'Message' : ''}
-                </Button>
-                <Button variant="outlined" color="secondary">
-                  <GroupAddIcon sx={{ mr: 1 }} />
-                  {!isXSmallScreen ? 'Connect' : ''}
-                </Button>
+                  <Button variant="contained" color="primary" sx={{ marginRight: 2 }}>
+                    <ChatBubbleOutlineIcon sx={{ mr: 1 }} />
+                    {!isXSmallScreen ? 'Message' : ''}
+                  </Button>
+                  <Button variant="outlined" color="secondary">
+                    <GroupAddIcon sx={{ mr: 1 }} />
+                    {!isXSmallScreen ? 'Connect' : ''}
+                  </Button>
                 </Box>
             </Box>
           </CardContent>
