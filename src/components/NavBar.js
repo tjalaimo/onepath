@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import { AppBar, Toolbar, Typography, SwipeableDrawer, CardActionArea, IconButton, useMediaQuery, Box, Grid, Divider, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Badge } from '@mui/material';
+import React, {useState, useEffect} from 'react';
+import { AppBar, Button, Toolbar, Typography, SwipeableDrawer, CardActionArea, IconButton, useMediaQuery, Box, Grid, Divider, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Badge } from '@mui/material';
 import HomeIcon from '@mui/icons-material/Home';
 import MedicalServicesIcon from '@mui/icons-material/MedicalServices';
 import FeedIcon from '@mui/icons-material/Feed';
@@ -21,12 +21,15 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 
 const NavBar = () => {
-  const { user } = useAuth(); 
+  const { user, logout } = useAuth(); 
   const isXSmallScreen = useMediaQuery((theme) =>  theme.breakpoints.down('sm'));
   const navigate = useNavigate();
   const [openMenu, setOpenMenu] = useState(false);
+  const [navLinks, setNavLinks] = useState([]);
+  const [secondaryNavLinks, setSecondaryNavLinks] = useState([]);
 
-  const navLinks = user && user.role === 'provider' ? [
+  useEffect(() => {
+    setNavLinks(user && user.role === 'user' ? [
       { label: 'Home', icon: <HomeIcon />, path: '/' },
     // { label: 'AI Assisstant', icon: <AssistantIcon />, path: '/assistant' },
       { label: 'Briefcase', icon: <MedicalServicesIcon />, path: '/briefcase' },
@@ -39,21 +42,22 @@ const NavBar = () => {
       { label: 'Documents', icon: <MedicalServicesIcon />, path: '/provider/documents' },
       { label: 'Feed', icon: <FeedIcon />, path: '/feed' },
       { label: 'Forums', icon: <GroupIcon />, path: '/networks' },
-      { label: 'Patients', icon: <DirectionsRunIcon />, path: '/providers' }
-    ]
-  ;
+      { label: 'Patients', icon: <DirectionsRunIcon />, path: '/provider/patientlist' }
+    ]);
 
-  const secondaryNavLinks = user && user.role === 'provider' ?  [
-    { label: 'Notification', count: 2, icon: <NotificationsIcon />, path: '/notifications' }, 
-    { label: 'Messages', count: 2, icon: <ChatBubbleOutlineIcon />, path: '/messages' }, 
-    { label: 'MyHealth', count: 0, icon: <MedicalInformationIcon  />, path: '/myhealth' },
-    { label: 'Shared Calendar', icon: <CalendarMonthIcon />, path: '/calendar' },
-  ] : [
-    { label: 'Notification', count: 2, icon: <NotificationsIcon />, path: '/notifications' }, 
-    { label: 'Messages', count: 2, icon: <ChatBubbleOutlineIcon />, path: '/messages' },     
-    { label: 'Shared Calendar', icon: <CalendarMonthIcon />, path: '/calendar' },
-  ]
- 
+    setSecondaryNavLinks(user && user.role === 'user' ?  [
+      { label: 'Notification', count: 2, icon: <NotificationsIcon />, path: '/notifications' }, 
+      { label: 'Messages', count: 2, icon: <ChatBubbleOutlineIcon />, path: '/messages' }, 
+      { label: 'MyHealth', count: 0, icon: <MedicalInformationIcon  />, path: '/myhealth' },
+      { label: 'Shared Calendar', icon: <CalendarMonthIcon />, path: '/calendar' },
+    ] : [
+      { label: 'Notification', count: 2, icon: <NotificationsIcon />, path: '/notifications' }, 
+      { label: 'Messages', count: 2, icon: <ChatBubbleOutlineIcon />, path: '/messages' },     
+      { label: 'Shared Calendar', icon: <CalendarMonthIcon />, path: '/calendar' },
+    ]);
+    
+  }, [user, navigate]);  
+
   const teritaryNavLinks = [
     { label: 'Settings', icon: <SettingsIcon />, path: '/settings' }, 
     { label: 'Help', icon: <HelpOutlineIcon  />, path: '/help' },
@@ -76,7 +80,8 @@ const NavBar = () => {
           
             <Grid item xs={8}>
               <Box display="flex" gap={5} sx={{ width: '100%', mx: 'auto' }}>
-                  {navLinks.map((link) => (
+                {user ?
+                  navLinks.map((link) => (
                       <IconButton
                         key={link.label}
                         color="inherit"
@@ -85,24 +90,30 @@ const NavBar = () => {
                       >
                       {link.icon}
                       </IconButton>
-                  ))}
+                  )) : ''
+                }
               </Box>
             </Grid>
 
             <Grid item xs={2} container justifyContent="flex-end">
               <Box>
-                <IconButton onClick={() => {setOpenMenu(true)}} sx={{ p: 0 }}>
-                  <Badge
-                    overlap="circular"
-                    anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
-                    color="secondary"
-                    badgeContent={
-                      <ExpandMoreIcon />
-                    }
-                  >
-                    <Avatar alt="Travis Howard" src="https://i.pravatar.cc/150?img=3" />
-                  </Badge>
-                </IconButton>
+                {user ? (
+                  <IconButton onClick={() => {setOpenMenu(true)}} sx={{ p: 0 }}>
+                    <Badge
+                      overlap="circular"
+                      anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+                      color="secondary"
+                      badgeContent={
+                        <ExpandMoreIcon />
+                      }
+                    >
+                      <Avatar alt="Travis Howard" src="https://i.pravatar.cc/150?img=3" />
+                    </Badge>
+                  </IconButton>
+                ) : (
+                    <Button variant="contained" color="secondary" onClick={ () => { navigate('/login') }}>Log In</Button>
+                  )                
+                }
               </Box>
             </Grid>
           </Grid>
@@ -110,19 +121,24 @@ const NavBar = () => {
         (
           <>
             <Grid container spacing={2} sx={{ }}>
-              <Grid item xs={10}>
+              <Grid item xs={8}>
                 <Box sx={{ }}>
                   <Typography variant="h6">
                   OnePath
                   </Typography>
                 </Box>
               </Grid>
-              <Grid item xs={2} container justifyContent="flex-end">
-                <Box>
-                  <IconButton onClick={() => {setOpenMenu(true)}} sx={{ p: 0 }}>
-                    <MenuIcon id="menu" />
-                  </IconButton>
-                </Box>
+              <Grid item xs={4} container justifyContent="flex-end">
+                {user ? (
+                  <Box>
+                    <IconButton onClick={() => {setOpenMenu(true)}} sx={{ p: 0 }}>
+                      <MenuIcon id="menu" />
+                    </IconButton>
+                  </Box>
+                ) : (
+                    <Button variant="contained" color="secondary" onClick={ () => { navigate('/login') }}>Log In</Button>
+                  )
+                }
               </Grid>
             </Grid>            
           </>

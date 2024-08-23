@@ -20,7 +20,7 @@ const CreatePostModal = ({ open, onClose }) => {
 
   return (
     <Modal open={open} onClose={onClose}>
-      <Box sx={{ width: 500, margin: 'auto', padding: 4, backgroundColor: 'white', mt: 8 }}>
+      <Box sx={{ width: '90%', margin: 'auto', padding: 4, backgroundColor: 'white', mt: 8 }}>
       <TextField
             fullWidth
             label="What's on your mind?"

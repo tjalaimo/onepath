@@ -1,12 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { TextField, Button, Grid, Card, CardContent, Typography } from '@mui/material';
 import { useAuth } from '../context/AuthContext';
 
 const LoginPage = () => {
-  const { login } = useAuth();
+  const { user, login, logout } = useAuth();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+
+  if (user) {
+    logout();
+  }
 
   const handleLogin = (e) => {
     e.preventDefault();

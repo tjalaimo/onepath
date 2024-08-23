@@ -53,7 +53,7 @@ const AccessCodesModal = ({ open, onClose }) => {
 
   return (
     <Modal open={open} onClose={onClose}>
-      <Box sx={{ width: 500, margin: 'auto', padding: 4, backgroundColor: 'white', mt: 8 }}>
+      <Box sx={{ width: '90%', margin: 'auto', padding: 4, backgroundColor: 'white', mt: 8 }}>
         <Tabs value={activeTab} onChange={handleTabChange} variant="fullWidth">
           <Tab label="Request Access Code" />
           <Tab label="Verify Access Code" />
@@ -78,7 +78,7 @@ const AccessCodesModal = ({ open, onClose }) => {
                     <Avatar>{patient.name[0]}</Avatar>
                   </ListItemAvatar>
                   <ListItemText primary={patient.name} secondary={patient.dob} />
-                  <Button variant="contained" onClick={handleRequestAccessCode}>Request Access Code</Button>
+                  <Button variant="contained" onClick={handleRequestAccessCode}>Request Code</Button>
                 </ListItem>
               ))}
             </List>

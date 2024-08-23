@@ -11,10 +11,19 @@ const Home = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    if (!user) {
+      navigate('/login');
+    }
     if (user && user.role === 'provider') {
       navigate('/provider/home');
     }
   }, [user, navigate]);
+
+  useEffect(() => {
+    if (!user) {
+      navigate('/login');
+    }
+  }, []);
 
   return (
     <Grid container spacing={2} justifyContent="center">

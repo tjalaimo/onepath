@@ -118,7 +118,7 @@ const ProviderHome = () => {
                     <Button variant="contained" color="secondary" sx={{ marginLeft: 1 }} onClick={handleOpenAccessCodeModal}>
                         <KeyIcon />{!isMobile ? 'Access Code' : ''}
                     </Button>
-                    <Button variant="contained" color="info" sx={{ marginLeft: 1 }} onClick={ () => { navigate('/briefcase') }} >
+                    <Button variant="contained" color="info" sx={{ marginLeft: 1 }} onClick={ () => { navigate('/provider/documents') }} >
                         <NoteAddIcon />{!isMobile ? 'Documents' : ''}
                     </Button>
                     <Button variant="contained" color="success" sx={{ marginLeft: 1 }} onClick={ () => { navigate('/provider/patientlist') }}>
