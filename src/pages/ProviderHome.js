@@ -3,17 +3,20 @@ import { Box, Grid, Card, CardContent, Typography, Button, Dialog, DialogTitle, 
 import { Calendar, momentLocalizer } from 'react-big-calendar';
 import moment from 'moment';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
-import SearchIcon from '@mui/icons-material/Search';
+
 import PostAddIcon from '@mui/icons-material/PostAdd';
 import KeyIcon from '@mui/icons-material/Key';
-import NoteAddIcon from '@mui/icons-material/NoteAdd';
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import DirectionsRunIcon from '@mui/icons-material/DirectionsRun';
 import { useTheme  } from '@mui/material';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 
-import AccessCodesModal from '../modals/AccessCodesModal';
+import Events from '../components/Events';
+import LeadsAndRequests from '../components/Leads';
+import ProviderAccessCodesModal from '../modals/ProviderAccessCodesModal';
 import CreatePostModal from '../modals/CreatePostModal';
+import ScheduleAppointmentModal from '../modals/ScheduleAppointmentModal';
 
 const localizer = momentLocalizer(moment);
 
@@ -97,6 +100,17 @@ const ProviderHome = () => {
   const handleCloseCreatePostModal = () => {
     setOpenCreatePostModal(false);
   };
+
+  const [openScheduleAppointmentModal, setOpenScheduleAppointmentModal] = useState(false);
+
+  const handleOpenScheduleAppointmentModal = () => {
+    setOpenScheduleAppointmentModal(true);
+  };
+
+  // Function to close the modal
+  const handleCloseScheduleAppointmentModal = () => {
+    setOpenScheduleAppointmentModal(false);
+  };
   
 
   return (
@@ -118,8 +132,8 @@ const ProviderHome = () => {
                     <Button variant="contained" color="secondary" sx={{ marginLeft: 1 }} onClick={handleOpenAccessCodeModal}>
                         <KeyIcon />{!isMobile ? 'Access Code' : ''}
                     </Button>
-                    <Button variant="contained" color="info" sx={{ marginLeft: 1 }} onClick={ () => { navigate('/provider/documents') }} >
-                        <NoteAddIcon />{!isMobile ? 'Documents' : ''}
+                    <Button variant="contained" color="info" sx={{ marginLeft: 1 }} onClick={handleOpenScheduleAppointmentModal} >
+                        <CalendarMonthIcon />{!isMobile ? 'Schedule Appointment' : ''}
                     </Button>
                     <Button variant="contained" color="success" sx={{ marginLeft: 1 }} onClick={ () => { navigate('/provider/patientlist') }}>
                         <DirectionsRunIcon />{!isMobile ? 'Patients' : ''}
@@ -132,42 +146,16 @@ const ProviderHome = () => {
         <Grid item xs={12}>
           <Card>
             <CardContent>
-              <Typography variant="h6" gutterBottom>
-                Incoming Requests & Leads
-              </Typography>
+              <LeadsAndRequests />
+            </CardContent>
+          </Card>
+        </Grid>
 
-              {/* Search bar */}
-              <TextField
-                fullWidth
-                placeholder="Search by name, type, or request..."
-                value={searchQuery}
-                onChange={handleSearch}
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <SearchIcon />
-                    </InputAdornment>
-                  ),
-                }}
-                sx={{ marginBottom: 2 }}
-              />
-
-              {displayedRequests.map((request) => (
-                <Box key={request.id} sx={{ marginBottom: 2 }}>
-                  <Typography variant="subtitle1">{request.user}</Typography>
-                  <Typography variant="body2">
-                    {request.type}: {request.description}
-                  </Typography>
-                </Box>
-              ))}
-
-              {/* Pagination */}
-              <Pagination
-                count={Math.ceil(filteredRequests.length / itemsPerPage)}
-                page={currentPage}
-                onChange={handlePageChange}
-                sx={{ marginTop: 2, mx: 'auto' }}
-              />
+        {/* Upcoming Events (Weekly Calendar View) */}
+        <Grid item xs={12}>
+          <Card>
+            <CardContent>
+              <Events />
             </CardContent>
           </Card>
         </Grid>
@@ -177,9 +165,9 @@ const ProviderHome = () => {
           <Card>
             <CardContent>
               <Typography variant="h6" gutterBottom>
-                Upcoming Events (This Week)
+                Office Calendar
               </Typography>
-              <div style={{ height: 300}}>
+              <div style={{ }}>
                 <Calendar
                     localizer={localizer}
                     events={appointments}
@@ -195,8 +183,9 @@ const ProviderHome = () => {
 
       </Grid>
 
-      <AccessCodesModal open={openAccessCodeModal} onClose={handleCloseAccessCodeModal} />
+      <ProviderAccessCodesModal open={openAccessCodeModal} onClose={handleCloseAccessCodeModal} />
       <CreatePostModal open={openCreatePostModal} onClose={handleCloseCreatePostModal} />
+      <ScheduleAppointmentModal open={openScheduleAppointmentModal} onClose={handleCloseScheduleAppointmentModal} />
     </Box>
   );
 };

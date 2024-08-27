@@ -112,8 +112,8 @@ const PatientList = () => {
                         <Divider variant="middle" />
 
                         <Box sx={{ mt: 2, width: '100%', display: 'flex', justifyContent: 'space-between' }}>
-                            <Button variant="outlined" onClick={ () => { navigate('/provider/patient/1') }}>View</Button>
-                            <Button variant="outlined">Contact</Button>
+                            <Button variant="outlined" onClick={ () => { navigate(`/provider/patient/${patient.id}`) }}>View</Button>
+                            <Button variant="outlined" onClick={() => navigate(`/messages/${patient.id}`)}>Contact</Button>
                             <Button variant="outlined" onClick={handleOpenScheduleAppointmentModal}>Schedule Appointment</Button>
                         </Box>
                     </CardContent>

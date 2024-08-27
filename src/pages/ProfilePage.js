@@ -4,7 +4,7 @@ import { Box, Typography, Avatar, Button, Chip, Grid, Card, CardContent, useMedi
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
 import GroupAddIcon from '@mui/icons-material/GroupAdd';
 
-import NetworkEvents from '../components/NetworkEvents';
+import Events from '../components/Events';
 import UserFeed from '../components/UserFeed';
 
 // Example data (replace with dynamic data from props or API)
@@ -96,7 +96,7 @@ const ProfilePage = (id) => {
         <Card sx={{ boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)', padding: 2, borderRadius: '12px' }}>
         <CardContent>
             <Box sx={{ }}>
-                <NetworkEvents />
+                <Events />
             </Box>
         </CardContent>
         </Card>

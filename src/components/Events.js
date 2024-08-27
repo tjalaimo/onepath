@@ -13,7 +13,7 @@ const events = [
   { title: 'Blood Test', description: 'Tj to quest for blood test', timestamp: '2024-09-25', icon: <BloodtypeIcon color="primary" /> },
 ];
 
-const NetworkEvents = () => {
+const Events = () => {
   const navigate = useNavigate();
 
   return (
@@ -50,4 +50,4 @@ const NetworkEvents = () => {
   );
 };
 
-export default NetworkEvents;
+export default Events;

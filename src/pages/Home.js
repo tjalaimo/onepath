@@ -7,11 +7,13 @@ import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import PostAddIcon from '@mui/icons-material/PostAdd';
 import KeyIcon from '@mui/icons-material/Key';
-import NoteAddIcon from '@mui/icons-material/NoteAdd';
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import DirectionsRunIcon from '@mui/icons-material/DirectionsRun';
 
-import AccessCodesModal from '../modals/AccessCodesModal';
+import Events from '../components/Events';
+import GenAccessCodesModal from '../modals/GenAccessCodesModal';
 import CreatePostModal from '../modals/CreatePostModal';
+import CreateEventModal from '../modals/CreateEventModal';
 
 const Home = () => {
   const { user } = useAuth(); 
@@ -55,6 +57,17 @@ const Home = () => {
   const handleCloseCreatePostModal = () => {
     setOpenCreatePostModal(false);
   };
+
+  const [openCreateEventModal, setOpenCreateEventModal] = useState(false);
+
+  const handleOpenCreateEventModal = () => {
+    setOpenCreateEventModal(true);
+  };
+
+  // Function to close the modal
+  const handleCloseCreateEventModal = () => {
+    setOpenCreateEventModal(false);
+  };
   
 
   return (
@@ -74,14 +87,22 @@ const Home = () => {
                   <Button variant="contained" color="secondary" sx={{ marginLeft: 1 }} onClick={handleOpenAccessCodeModal}>
                       <KeyIcon />{!isMobile ? 'Access Code' : ''}
                   </Button>
-                  <Button variant="contained" color="info" sx={{ marginLeft: 1 }} onClick={ () => { navigate('/provider/documents') }} >
-                      <NoteAddIcon />{!isMobile ? 'Documents' : ''}
+                  <Button variant="contained" color="info" sx={{ marginLeft: 1 }} onClick={handleOpenCreateEventModal} >
+                      <CalendarMonthIcon />{!isMobile ? 'New Event' : ''}
                   </Button>
                   <Button variant="contained" color="success" sx={{ marginLeft: 1 }} onClick={ () => { navigate('/provider/patientlist') }}>
                       <DirectionsRunIcon />{!isMobile ? 'Patients' : ''}
                   </Button>
               </CardContent>
           </Card>
+      </Grid>
+
+      <Grid item xs={12}>
+        <Card>
+          <CardContent>
+            <Events />
+          </CardContent>
+        </Card>
       </Grid>
 
       <Grid item xs={12}>
@@ -103,8 +124,9 @@ const Home = () => {
           </Paper>          
       </Grid>
 
-      <AccessCodesModal open={openAccessCodeModal} onClose={handleCloseAccessCodeModal} />
+      <GenAccessCodesModal open={openAccessCodeModal} onClose={handleCloseAccessCodeModal} />
       <CreatePostModal open={openCreatePostModal} onClose={handleCloseCreatePostModal} />
+      <CreateEventModal open={openCreateEventModal} onClose={handleCloseCreateEventModal} />
     </Grid>
     
   );

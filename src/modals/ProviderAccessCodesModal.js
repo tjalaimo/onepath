@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Modal, Tabs, Tab, Box, TextField, Button, List, ListItem, ListItemAvatar, Avatar, ListItemText, Pagination, Snackbar } from '@mui/material';
 
-const AccessCodesModal = ({ open, onClose }) => {
+const ProviderAccessCodesModal = ({ open, onClose }) => {
   const [activeTab, setActiveTab] = useState(0);
   const [page, setPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState('');
@@ -106,4 +106,4 @@ const AccessCodesModal = ({ open, onClose }) => {
   );
 };
 
-export default AccessCodesModal;
+export default ProviderAccessCodesModal;

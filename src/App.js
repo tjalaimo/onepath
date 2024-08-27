@@ -16,7 +16,7 @@ import ConversationPage from './pages/ConversationPage';
 import NotificationsPage from './pages/NotificationsPage';
 import SettingsPage from './pages/SettingsPage';
 import CalendarPage from './pages/CalendarPage';
-import EventDetails from './pages/EventDetails';
+//import EventDetails from './pages/EventDetails';
 import HelpPage from './pages/HelpPage';
 import ProfilePage from './pages/ProfilePage';
 import MyHealth from './pages/MyHealth';
@@ -29,6 +29,7 @@ import ForumPage from './pages/ForumPage';
 import ForumPostPage from './pages/ForumPostPage';
 import FormsPage from './pages/FormsPage';
 import FormPage from './pages/FormPage';
+import AppointmentDetailPage from './pages/AppointmentDetailPage';
 
 import { AuthProvider } from './context/AuthContext';
 
@@ -62,7 +63,6 @@ function App() {
               <Route path="/notifications" element={<NotificationsPage />} />
               <Route path="/settings" element={<SettingsPage />} />
               <Route path="/calendar" element={<CalendarPage />} />
-              <Route path="/event" element={<EventDetails />} />
               <Route path="/help" element={<HelpPage />} />     
               <Route path="/profile/:id" element={<ProfilePage />} />
 
@@ -75,6 +75,7 @@ function App() {
               <Route path="/provider/forums" element={<ForumsPage />} />
               <Route path="/provider/forum/:id" element={<ForumPage />} />
               <Route path="/provider/forum/post/:id" element={<ForumPostPage />} />
+              <Route path="/provider/appointment/:id" element={<AppointmentDetailPage />} />
             </Routes>
           </Grid>
 

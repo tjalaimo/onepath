@@ -1,7 +1,7 @@
 import React from 'react';
 import { Paper, Grid } from '@mui/material';
 import NetworkMembers from '../components/NetworkMembers';
-import NetworkEvents from '../components/NetworkEvents';
+import Events from '../components/Events';
 
 const NetworkPage = () => {
   return (
@@ -16,7 +16,7 @@ const NetworkPage = () => {
             }}
           >
             <NetworkMembers />
-            <NetworkEvents />
+            <Events />
           </Paper>
       </Grid>
     </Grid>

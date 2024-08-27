@@ -8,8 +8,7 @@ const HealthNews = () => {
   const { user } = useAuth(); 
   const [userAuthenticated, setUserAuthenticated] = useState(false);
 
-  useEffect(() => {
-    console.log(user);
+  useEffect(() => {    
     setUserAuthenticated(user != null);
   }, [user, navigate]);
 
