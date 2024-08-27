@@ -63,7 +63,7 @@ const MyHealth = () => {
   ];
 
   return (
-    <Card sx={{ mb: 4, mx: 4 }}>
+    <Card sx={{ mb: 4 }}>
       <CardContent>
         <Grid container spacing={3}>
             {/* Steps Taken Chart */}

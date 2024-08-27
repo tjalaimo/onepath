@@ -47,7 +47,7 @@ const PatientDetails = () => {
 
   return (
     <Grid container spacing={2} justifyContent="center">
-        <Grid item xs={10}>
+        <Grid item xs={12}>
             <Card sx={{ boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)', padding: 2, borderRadius: '12px' }}>
                 <CardContent>
                     <Box sx={{ display: 'flex', alignItems: 'center', mb: 4 }}>

@@ -29,7 +29,7 @@ const CalendarPage = () => {
 
   return (
     <Grid container spacing={2} justifyContent="center">
-      <Grid item xs={10}>
+      <Grid item xs={12}>
         <Paper 
           sx={{ 
             padding: 3, 

@@ -100,7 +100,7 @@ const ProviderHome = () => {
   
 
   return (
-    <Box sx={{ px: 4, mb: 4 }}>
+    <Box sx={{ mb: 4 }}>
       
       <Grid container spacing={3}>
 

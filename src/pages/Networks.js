@@ -65,7 +65,7 @@ const NetworkCard = ({ network }) => {
 
 const Networks = () => (  
   <Grid container spacing={2} justifyContent="center">
-    <Grid item xs={10}>
+    <Grid item xs={12}>
       {networks.map((network) => (
         <NetworkCard key={network.id} network={network} />
       ))}

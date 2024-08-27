@@ -45,7 +45,7 @@ const MessagesPage = () => {
 
   return (
     <Grid container spacing={2} justifyContent="center">
-      <Grid item xs={10}>
+      <Grid item xs={12}>
         <Card sx={{ marginBottom: 2, boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)', padding: 2, borderRadius: '12px' }}>
           <CardContent>
             <Typography variant="h6" gutterBottom>

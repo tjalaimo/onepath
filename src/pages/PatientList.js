@@ -61,7 +61,7 @@ const PatientList = () => {
 
   return (
     <Grid container spacing={2} justifyContent="center">
-      <Grid item xs={10}>   
+      <Grid item xs={12}>   
 
         {/* Search Bar */}
         <TextField

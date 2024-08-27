@@ -5,7 +5,7 @@ import UserFeed from '../components/UserFeed';
 const Feed = () => {
   return (
     <Grid container spacing={2} justifyContent="center">
-      <Grid item xs={10}>
+      <Grid item xs={12}>
         <UserFeed />
       </Grid>      
     </Grid>

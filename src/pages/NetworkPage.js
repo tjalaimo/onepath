@@ -6,7 +6,7 @@ import NetworkEvents from '../components/NetworkEvents';
 const NetworkPage = () => {
   return (
     <Grid container justifyContent="center">
-      <Grid item xs={10}>
+      <Grid item>
         <Paper 
             sx={{ 
               padding: 3, 

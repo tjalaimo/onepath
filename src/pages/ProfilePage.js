@@ -24,7 +24,7 @@ const ProfilePage = (id) => {
 
   return (
     <Grid container spacing={2} justifyContent="center">
-      <Grid item xs={10}>
+      <Grid item xs={12}>
         <Card sx={{ boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)', padding: 2, borderRadius: '12px' }}>
           <CardContent>
             {/* Profile Section */}
@@ -55,7 +55,7 @@ const ProfilePage = (id) => {
     
       {/* Conditional Section: Medical Information (if connected) */}
       {isConnected && (
-        <Grid item xs={10}>
+        <Grid item xs={12}>
             <Card sx={{ boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)', padding: 2, borderRadius: '12px' }}>
             <CardContent>
                 {/* Medical Information Section */}
@@ -74,7 +74,7 @@ const ProfilePage = (id) => {
 
       {/* Conditional Section: Medications (if connected) */}
       {isConnected && (
-        <Grid item xs={10}>
+        <Grid item xs={12}>
             <Card sx={{ boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)', padding: 2, borderRadius: '12px' }}>
             <CardContent>
                 {/* Medications Section */}
@@ -92,7 +92,7 @@ const ProfilePage = (id) => {
       )}
 
       {/* Events Section */}
-      <Grid item xs={10}>
+      <Grid item xs={12}>
         <Card sx={{ boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)', padding: 2, borderRadius: '12px' }}>
         <CardContent>
             <Box sx={{ }}>
@@ -103,7 +103,7 @@ const ProfilePage = (id) => {
       </Grid>
 
         {/* Posts Section */}
-        <Grid item xs={10}>
+        <Grid item xs={12}>
             <Card sx={{ boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)', padding: 2, borderRadius: '12px' }}>
             <CardContent>
                 {/* Posts Section */}

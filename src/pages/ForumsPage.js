@@ -3,9 +3,10 @@ import { Box, Typography, Avatar, Grid, Card, CardContent, TextField, Pagination
 import SearchIcon from '@mui/icons-material/Search';
 import { useNavigate } from 'react-router-dom';
 
-const forumsData = Array.from({ length: 15 }, (_, index) => ({
+const randomSpecialities = ['Allergy and immunology','Anesthesiology','Dermatology','Diagnostic radiology','Emergency medicine','Family medicine','Internal medicine','Medical genetics','Neurology','Nuclear medicine','Obstetrics and gynecology','Ophthalmology','Pathology','Pediatrics','Physical medicine and rehabilitation','Preventive medicine','Psychiatry','Radiation oncology','Surgery','Urology']
+const forumsData = Array.from({ length: randomSpecialities.length }, (_, index) => ({
   id: index + 1,
-  name: `Forum ${index + 1}`,
+  name: randomSpecialities[index],
   description: 'This is a random description that will apply to all since I put this in loop to generate the array, but make it long so its multi-line',
   membersCount: Math.floor(Math.random() * 1000),
   membersAvatars: ['/static/images/avatar/1.jpg', '/static/images/avatar/2.jpg', '/static/images/avatar/3.jpg'],

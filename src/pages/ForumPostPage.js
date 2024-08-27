@@ -1,10 +1,16 @@
 import React, { useState } from 'react';
 import { Box, Typography, Card, CardContent, Button, TextField, Avatar, Grid, Divider } from '@mui/material';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 const postDetails = {
-  title: 'Sample Post',
-  content: 'This is the content of the post.',
+  title: 'The importance of AI in medical imaging',
+  content: 'This is the content of the post. It would have information input by the creator.',
   image: 'https://i.pravatar.cc/150?img=1',
+  poster: {
+    id: 9,
+    user: 'Bob Post',
+    avatar: ''
+  },
   comments: [
     {
       id: 1,
@@ -31,9 +37,23 @@ const ForumPostPage = () => {
 
   return (
     <Grid container spacing={2} justifyContent="center">
-      <Grid item xs={10}>
-        <Card sx={{ marginBottom: 2, boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)', padding: 2, borderRadius: '12px' }}>
+      <Grid item xs={10}>        
+        <Card sx={{ marginBottom: 2, boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)', padding: 2, borderRadius: '12px' }}>        
           <CardContent>
+            <Grid container>
+              <Grid item>
+                <Button variant="outlined" sx={{ }} onClick={ () => { window.history.back() }}><ArrowBackIcon /></Button>                
+              </Grid>
+              <Grid item sx={{ marginLeft: 2 }}>
+                <Avatar>{postDetails.poster.avatar}</Avatar>                
+              </Grid>
+              <Grid item sx={{ marginLeft: 2 }}>                
+                <Typography variant="h6">{postDetails.poster.user}</Typography>                
+              </Grid>
+            </Grid>
+            <Box>
+              
+            </Box>
             <Typography variant="h4" gutterBottom>
               {postDetails.title}
             </Typography>

@@ -27,6 +27,8 @@ import PatientDetails from './pages/PatientDetails';
 import ForumsPage from './pages/ForumsPage';
 import ForumPage from './pages/ForumPage';
 import ForumPostPage from './pages/ForumPostPage';
+import FormsPage from './pages/FormsPage';
+import FormPage from './pages/FormPage';
 
 import { AuthProvider } from './context/AuthContext';
 
@@ -38,7 +40,7 @@ function App() {
       <CssBaseline />
       <AuthProvider>
         <NavBar />
-        <Grid container spacing={2} sx={{ pt: 8 }}>
+        <Grid container spacing={2} sx={{ pt: 4 }}>
           {!isSmallScreen && (
             <Grid item xs={2} sx={{ }}>
               <Sidebar /> {/* Left sidebar with user information */}
@@ -68,7 +70,8 @@ function App() {
               <Route  path="/provider/home" element={<ProviderHome />} />
               <Route  path="/provider/patientlist" element={<PatientList />} />
               <Route  path="/provider/patient/:id" element={<PatientDetails />} />
-              <Route path="/provider/documents" element={<BriefcasePage />} />
+              <Route path="/provider/documents" element={<FormsPage />} />
+              <Route path="/provider/document/:form" element={<FormPage />} />
               <Route path="/provider/forums" element={<ForumsPage />} />
               <Route path="/provider/forum/:id" element={<ForumPage />} />
               <Route path="/provider/forum/post/:id" element={<ForumPostPage />} />

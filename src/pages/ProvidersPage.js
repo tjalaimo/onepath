@@ -156,7 +156,7 @@ const ProvidersPage = () => {
 
   return (
     <Grid container spacing={2} justifyContent="center">
-      <Grid item xs={10}>     
+      <Grid item xs={12} sx={{ mb: 4}}>     
 
         {/* Search Bar */}
         <TextField

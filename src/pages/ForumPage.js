@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { Box, Typography, Card, CardContent, CardActionArea, TextField, Grid, InputAdornment, Pagination } from '@mui/material';
+import { Box, Typography, Button, Card, CardContent, CardActionArea, TextField, Grid, InputAdornment, Pagination } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import { useNavigate } from 'react-router-dom';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 const forumPosts = Array.from({ length: 20 }, (_, index) => ({
   id: index + 1,
@@ -28,21 +29,29 @@ const ForumPage = () => {
 
   return (
     <Box sx={{ pb: 4, px: 4 }}>
-
-      <TextField
-        fullWidth
-        placeholder="Search forum posts by title or content..."
-        value={searchQuery}
-        onChange={(e) => setSearchQuery(e.target.value)}
-        InputProps={{
-          startAdornment: (
-            <InputAdornment position="start">
-              <SearchIcon />
-            </InputAdornment>
-          ),
-        }}
-        sx={{ marginBottom: 3 }}
-      />
+      <Grid container>
+        <Grid item xs={3} sm={2}>
+          <Button variant="outlined" sx={{ mb: 1 }} onClick={ () => { window.history.back() }}><ArrowBackIcon /></Button>  
+        </Grid>
+        <Grid item xs={9} sm={10}>
+          <TextField
+            fullWidth
+            placeholder="Search forum posts by title or content..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <SearchIcon />
+                </InputAdornment>
+              ),
+            }}
+            sx={{ marginBottom: 3 }}
+          />
+        </Grid>
+      </Grid>
+      
+      
 
       <Grid container spacing={3}>
         {displayedPosts.map((post) => (
