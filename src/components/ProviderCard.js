@@ -3,7 +3,7 @@ import { Avatar, Box, Card, CardContent, Typography, Rating, List, ListItem, Lis
 import ScheduleAppointmentModal from '../modals/ScheduleAppointmentModal';
 import { useNavigate } from 'react-router-dom';
 
-const ProviderCard = ({ provider, showView }) => {
+const ProviderCard = ({ provider, showView, showReviews }) => {
     const navigate = useNavigate(); 
     const [openScheduleAppointmentModal, setOpenScheduleAppointmentModal] = useState(false);
   
@@ -43,23 +43,28 @@ const ProviderCard = ({ provider, showView }) => {
             {provider.description}
           </Typography>
   
-          {/* Divider for Reviews */}
-          <Divider sx={{ marginY: 2 }} />
-  
-          <Typography variant="h6" gutterBottom>
-            Reviews:
-          </Typography>
-  
-          <List>
-            {provider.reviews.map((review) => (
-              <ListItem key={review.id} disablePadding>
-                <ListItemText
-                  primary={`"${review.content}"`}
-                  secondary={`- ${review.reviewer}`}
-                />
-              </ListItem>
-            ))}
-          </List>
+          {showReviews ? (
+              <>
+                <Divider sx={{ marginY: 2 }} />
+      
+                <Typography variant="h6" gutterBottom>
+                  Reviews:
+                </Typography>
+
+                <List>
+                  {provider.reviews.map((review) => (
+                    <ListItem key={review.id} disablePadding>
+                      <ListItemText
+                        primary={`"${review.content}"`}
+                        secondary={`- ${review.reviewer}`}
+                      />
+                    </ListItem>
+                  ))}
+                </List>
+              </>
+            ) : ''
+          }
+          
   
           <Divider sx={{ marginY: 2 }} />
   

@@ -5,20 +5,38 @@ import MapIcon from '@mui/icons-material/Map';
 import AddIcon from '@mui/icons-material/Add';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import PlaylistAddCheckCircleIcon from '@mui/icons-material/PlaylistAddCheckCircle';
+import WriteReview from '../components/WriteReview';
 
-const appointmentData = {
-  date: '2024-09-01 14:00',
-  type: 'Office Visit',
-  description: 'Routine checkup and blood test',
-  providerId: '1234',
-  providerName: 'Dr. Jane Doe',
-  providerAddress: '123 Health St, Wellness City, WC 12345',
-  questions: ['Can I stop medication?', 'Am I taking too much medication?'],
-  status: 'pending'
-};
+const appointmentList = [{
+        date: '2024-09-01 14:00',
+        type: 'Office Visit',
+        description: 'Routine checkup and blood test',
+        providerId: '1234',
+        providerName: 'Dr. Jane Doe',
+        providerAddress: '123 Health St, Wellness City, WC 12345',
+        questions: ['Can I stop medication?', 'Am I taking too much medication?'],
+        providerNotes: [],
+        isComplete: false
+    },
+    {
+        date: '2024-09-01 14:00',
+        type: 'Office Visit',
+        description: 'Routine checkup and blood test',
+        providerId: '1234',
+        providerName: 'Dr. Jane Doe',
+        providerAddress: '123 Health St, Wellness City, WC 12345',
+        questions: ['Can I stop medication?', 'Am I taking too much medication?'],
+        providerNotes: ['Monitor blood sugar levels more frequently.', 'Follow-up in 3 months.'],
+        isComplete: true
+    }
+];
 
 const AppointmentChecklistPage = () => {
-  const { id } = useParams();    
+  const { id } = useParams();
+  console.log(id);
+  console.log(appointmentList[id]);
+  const appointmentData = appointmentList[id] ? appointmentList[id] : appointmentList[0];
   const [questions, setQuestions] = useState(appointmentData.questions);
   const [newQuestion, setNewQuestion] = useState('');
 
@@ -66,28 +84,29 @@ const AppointmentChecklistPage = () => {
                                     </IconButton>
                                 </Typography>
                             </Box>
-                            <Grid container>
-                                <Grid item xs={6}>
-                                    <Button variant="contained" color="primary" sx={{ marginBottom: 2 }}>
-                                        Confirm
-                                    </Button>
+                            {!appointmentData.isComplete ? (
+                                <Grid container>
+                                    <Grid item xs={6}>
+                                        <Button variant="contained" color="primary" sx={{ marginBottom: 2 }}>
+                                            Confirm
+                                        </Button>
+                                    </Grid>
+                                    <Grid item xs={6} justifyContent={'flex-end'}>
+                                        <Button variant="contained" color="primary" sx={{ marginBottom: 2 }}>
+                                            Reschedule
+                                        </Button>
+                                    </Grid>
                                 </Grid>
-                                <Grid item xs={6} justifyContent={'flex-end'}>
-                                    <Button variant="contained" color="primary" sx={{ marginBottom: 2 }}>
-                                        Reschedule
-                                    </Button>
-                                </Grid>
-                            </Grid>
+                                ) : ''
+                            }
                         </Box>
-
-                        
 
                         <Divider variant="middle" />
 
                         {/* Appointment Description */}
                         <Box sx={{ mb: 2, mt: 2 }}>   
                             <Typography variant="h6" gutterBottom sx={{ marginTop: 2 }}>
-                                Appointment Description
+                                Description
                             </Typography>
                             <Typography variant="body1" gutterBottom>
                                 {appointmentData.description}
@@ -119,42 +138,72 @@ const AppointmentChecklistPage = () => {
                             )}
                         
                             {/* Add New Question */}
-                            <Box sx={{ display: 'flex', alignItems: 'center', marginTop: 2 }}>
-                                <TextField
-                                label="Ask a question"
-                                value={newQuestion}
-                                onChange={(e) => setNewQuestion(e.target.value)}
-                                fullWidth
-                                />
-                                <IconButton color="primary" onClick={handleAddQuestion}>
-                                <AddIcon />
-                                </IconButton>
-                            </Box>
+                            {!appointmentData.isComplete ? (  
+                                <Box sx={{ display: 'flex', alignItems: 'center', marginTop: 2 }}>
+                                    <TextField
+                                    label="Ask a question"
+                                    value={newQuestion}
+                                    onChange={(e) => setNewQuestion(e.target.value)}
+                                    fullWidth
+                                    />
+                                    <IconButton color="primary" onClick={handleAddQuestion}>
+                                    <AddIcon />
+                                    </IconButton>
+                                </Box>
+                                ) : ''
+                            }
                             
                         </Box>
 
+                        {/* Notes as a list */}                        
+                        {appointmentData.isComplete ? (  
+                            <>
+                                <Divider variant="middle" />
+                                <Typography variant="body1" sx={{ marginTop: 2 }}>
+                                    <strong>Notes:</strong>
+                                </Typography>
+                                <List>
+                                    {appointmentData.providerNotes.map((note, index) => (
+                                    <ListItem key={index}>
+                                        <PlaylistAddCheckCircleIcon color="primary" />
+                                        <Box sx={{ ml:2 }}>
+                                        <Typography variant="subtitle1">{note}</Typography>
+                                        </Box>                    
+                                    </ListItem>
+                                    ))}
+                                </List> 
+                            </>
+                            ) : ''
+                        }
+                        
+
                         <Divider variant="middle" />
 
-                        {/* Action Buttons */}
-                        <Box sx={{ mb: 2, mt: 2 }}>  
-                            <Grid container spacing={2} sx={{ marginTop: 4 }}>
-                                <Grid item xs={12} sm={4}>
-                                <Button fullWidth variant="contained" color="secondary">
-                                    Complete Intake Forms
-                                </Button>
+                        {!appointmentData.isComplete ? (                            
+                            <Box sx={{ mb: 2, mt: 2 }}>  
+                                <Grid container spacing={2} sx={{ marginTop: 4 }}>
+                                    <Grid item xs={12} sm={4}>
+                                    <Button fullWidth variant="contained" color="secondary">
+                                        Complete Intake Forms
+                                    </Button>
+                                    </Grid>
+                                    <Grid item xs={12} sm={4}>
+                                    <Button fullWidth variant="contained" color="secondary">
+                                        Sign Authorization
+                                    </Button>
+                                    </Grid>
+                                    <Grid item xs={12} sm={4}>
+                                    <Button fullWidth variant="contained" color="secondary">
+                                        Generate Access Code
+                                    </Button>
+                                    </Grid>
                                 </Grid>
-                                <Grid item xs={12} sm={4}>
-                                <Button fullWidth variant="contained" color="secondary">
-                                    Sign Authorization
-                                </Button>
-                                </Grid>
-                                <Grid item xs={12} sm={4}>
-                                <Button fullWidth variant="contained" color="secondary">
-                                    Generate Access Code
-                                </Button>
-                                </Grid>
-                            </Grid>
-                        </Box>
+                            </Box>
+                            ): (
+                                <WriteReview onSubmitReview={() => {}} />
+                            )
+                        }
+
                     </Box>
                 </CardContent>
             </Card>

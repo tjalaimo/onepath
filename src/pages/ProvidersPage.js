@@ -109,7 +109,7 @@ const ProvidersPage = () => {
             currentProviders.map((provider) => (
               <Grid item xs={12} key={provider.id}>
                 <Box sx={{ mb: 2 }}>
-                  <ProviderCard provider={provider} showView={true} />
+                  <ProviderCard provider={provider} showView={true} showReviews={true} />
                 </Box>
               </Grid>
             ))

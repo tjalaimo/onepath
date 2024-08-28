@@ -4,6 +4,7 @@ import { Box, Typography, Grid, Card, CardContent } from '@mui/material';
 
 import ProviderCard from '../components/ProviderCard';
 import UserFeed from '../components/UserFeed';
+import Reviews from '../components/Reviews';
 
 const providerProfile = {
   id: 1,
@@ -26,7 +27,12 @@ const ProviderProfilePage = () => {
     <Grid container spacing={2} justifyContent="center">
       <Grid item xs={12}>
         {/* Profile Section */}
-        <ProviderCard provider={providerProfile} showView={false} />
+        <ProviderCard provider={providerProfile} showView={false} showReviews={false} />
+      </Grid>
+
+      <Grid item xs={12}>
+        {/* Reviews Section */}
+        <Reviews />
       </Grid>
 
       {/* Posts Section */}
