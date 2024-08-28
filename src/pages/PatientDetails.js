@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { Box, Typography, Avatar, Chip, Button, List, ListItem, TextField, Dialog, DialogActions, DialogContent, DialogTitle, Grid, Card, CardContent, Divider, useMediaQuery } from '@mui/material';
+import { Box, Typography, Avatar, Chip, Button, List, ListItem, TextField, IconButton, Grid, Card, CardContent, Divider, useMediaQuery } from '@mui/material';
 import BloodtypeIcon from '@mui/icons-material/Bloodtype';
 import EmergencyShareIcon from '@mui/icons-material/EmergencyShare';
 import VideocamIcon from '@mui/icons-material/Videocam';
 import HealingIcon from '@mui/icons-material/Healing';
+import AddIcon from '@mui/icons-material/Add';
 import PlaylistAddCheckCircleIcon from '@mui/icons-material/PlaylistAddCheckCircle';
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
@@ -17,7 +18,6 @@ import HealthReports from '../components/HealthReports';
 
 const PatientDetails = () => {
   const [notes, setNotes] = useState(['Patient is improving']);
-  const [openNoteModal, setOpenNoteModal] = useState(false);
   const [newNote, setNewNote] = useState('');
   const isXSmallScreen = useMediaQuery((theme) =>  theme.breakpoints.down('md'));
   const navigate = useNavigate(); 
@@ -26,7 +26,6 @@ const PatientDetails = () => {
   const handleAddNote = () => {
     setNotes([...notes, newNote]);
     setNewNote('');
-    setOpenNoteModal(false);
   };
 
   const patient = {
@@ -120,7 +119,18 @@ const PatientDetails = () => {
                                 </ListItem>
                             ))}
                         </List>
-                        <Button variant="contained" onClick={() => setOpenNoteModal(true)}>Add Note</Button>
+                        {/* Add New Question */}
+                        <Box sx={{ display: 'flex', alignItems: 'center', marginTop: 2 }}>
+                            <TextField
+                            label="Ask a question"
+                            value={newNote}
+                            onChange={(e) => setNewNote(e.target.value)}
+                            fullWidth
+                            />
+                            <IconButton color="primary" onClick={handleAddNote}>
+                                <AddIcon />
+                            </IconButton>
+                        </Box>
                     </Box>
 
                     <Divider variant="middle" />
@@ -148,23 +158,7 @@ const PatientDetails = () => {
                     <Box sx={{ mt:2 }}>
                         <Typography variant="h6" sx={{  mb: 2 }}>Health Reports</Typography>
                         <HealthReports />
-                    </Box>
-                    
-                    <Dialog open={openNoteModal} onClose={() => setOpenNoteModal(false)}>
-                        <DialogTitle>Add Note</DialogTitle>
-                        <DialogContent>
-                        <TextField
-                            label="Note"
-                            fullWidth
-                            value={newNote}
-                            onChange={(e) => setNewNote(e.target.value)}
-                        />
-                        </DialogContent>
-                        <DialogActions>
-                        <Button onClick={() => setOpenNoteModal(false)}>Cancel</Button>
-                        <Button onClick={handleAddNote} variant="contained">Add</Button>
-                        </DialogActions>
-                    </Dialog>
+                    </Box>                    
                 </CardContent>
             </Card>
         </Grid>

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Avatar, Box, Card, CardContent, Typography, Rating, List, ListItem, ListItemText, Divider, Grid, Button, TextField, Pagination } from '@mui/material';
-import MapIcon from '@mui/icons-material/Map';
-import ScheduleIcon from '@mui/icons-material/Schedule';
-import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
-import { MessageOutlined } from '@mui/icons-material';
+import ScheduleAppointmentModal from '../modals/ScheduleAppointmentModal';
+import { useNavigate } from 'react-router-dom';
+
+import ProviderCard from '../components/ProviderCard';
 
 // Example provider data
 const allProviders = [
@@ -60,70 +60,6 @@ const allProviders = [
   }
 ];
 
-const ProviderCard = ({ provider }) => {
-  return (
-    <Card sx={{ marginBottom: 4 }}>
-      <CardContent>
-        <Box sx={{ display: 'flex', alignItems: 'center', marginBottom: 2 }}>
-          <Avatar
-            alt={provider.name}
-            src={provider.profilePicture}
-            sx={{ width: 100, height: 100, marginRight: 2 }}
-          />
-          <Box>
-            <Typography variant="h5">{provider.name}</Typography>
-            <Typography variant="subtitle1" color="textSecondary">
-              {provider.specialty}
-            </Typography>
-            <Box sx={{ display: 'flex', alignItems: 'center' }}>
-              <Rating value={provider.rating} precision={0.1} readOnly />
-              <Typography variant="body2" sx={{ marginLeft: 1 }}>
-                ({provider.reviewCount})
-              </Typography>
-            </Box>
-          </Box>
-        </Box>
-
-        <Typography variant="body1" gutterBottom>
-          {provider.description}
-        </Typography>
-
-        {/* Divider for Reviews */}
-        <Divider sx={{ marginY: 2 }} />
-
-        <Typography variant="h6" gutterBottom>
-          Reviews:
-        </Typography>
-
-        <List>
-          {provider.reviews.map((review) => (
-            <ListItem key={review.id} disablePadding>
-              <ListItemText
-                primary={`"${review.content}"`}
-                secondary={`- ${review.reviewer}`}
-              />
-            </ListItem>
-          ))}
-        </List>
-
-        <Divider sx={{ marginY: 2 }} />
-
-        <Grid container>
-          <Grid item xs={4}>
-            <Button variant="text" color="primary"><MapIcon /></Button>
-          </Grid>
-          <Grid item xs={4} justifyContent="center">
-            <Button variant="text" color="primary"><ScheduleIcon /></Button>
-          </Grid>
-          <Grid item xs={4} container justifyContent="flex-end">
-            <Button variant="text" color="primary"><MessageOutlined /></Button>
-          </Grid>
-        </Grid>
-      </CardContent>
-    </Card>
-  );
-};
-
 const ProvidersPage = () => {
 
   const [searchQuery, setSearchQuery] = useState('');
@@ -172,7 +108,9 @@ const ProvidersPage = () => {
           {currentProviders.length > 0 ? (
             currentProviders.map((provider) => (
               <Grid item xs={12} key={provider.id}>
-                <ProviderCard provider={provider} />
+                <Box sx={{ mb: 2 }}>
+                  <ProviderCard provider={provider} showView={true} />
+                </Box>
               </Grid>
             ))
           ) : (
@@ -189,7 +127,7 @@ const ProvidersPage = () => {
             color="primary"
           />
         </Box>
-      </Grid>      
+      </Grid>       
     </Grid>
   );
 };

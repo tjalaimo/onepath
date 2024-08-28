@@ -13,11 +13,13 @@ const appointmentData = {
   providerId: '1234',
   providerName: 'Dr. Jane Doe',
   providerAddress: '123 Health St, Wellness City, WC 12345',
+  questions: ['Can I stop medication?', 'Am I taking too much medication?'],
+  status: 'pending'
 };
 
 const AppointmentChecklistPage = () => {
-  const { id } = useParams();
-  const [questions, setQuestions] = useState([]);
+  const { id } = useParams();    
+  const [questions, setQuestions] = useState(appointmentData.questions);
   const [newQuestion, setNewQuestion] = useState('');
 
   const handleAddQuestion = () => {
@@ -128,6 +130,7 @@ const AppointmentChecklistPage = () => {
                                 <AddIcon />
                                 </IconButton>
                             </Box>
+                            
                         </Box>
 
                         <Divider variant="middle" />

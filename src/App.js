@@ -31,6 +31,7 @@ import FormsPage from './pages/FormsPage';
 import FormPage from './pages/FormPage';
 import AppointmentDetailPage from './pages/AppointmentDetailPage';
 import AppointmentChecklistPage from './pages/AppointmentChecklistPage';
+import ProviderProfilePage from './pages/ProviderProfilePage';
 
 import { AuthProvider } from './context/AuthContext';
 
@@ -78,6 +79,7 @@ function App() {
               <Route path="/provider/forum/:id" element={<ForumPage />} />
               <Route path="/provider/forum/post/:id" element={<ForumPostPage />} />
               <Route path="/provider/appointment/:id" element={<AppointmentDetailPage />} />
+              <Route path="/provider/profile/:id" element={<ProviderProfilePage />} />
             </Routes>
           </Grid>
 

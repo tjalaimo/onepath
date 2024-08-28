@@ -30,10 +30,10 @@ const ForumPage = () => {
   return (
     <Box sx={{ pb: 4, px: 4 }}>
       <Grid container>
-        <Grid item xs={3} sm={2}>
+        <Grid item xs={3}>
           <Button variant="outlined" sx={{ mb: 1 }} onClick={ () => { window.history.back() }}><ArrowBackIcon /></Button>  
         </Grid>
-        <Grid item xs={9} sm={10}>
+        <Grid item xs={9}>
           <TextField
             fullWidth
             placeholder="Search forum posts by title or content..."
