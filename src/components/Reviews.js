@@ -129,22 +129,24 @@ const Reviews = () => {
   return (
     <Card sx={{ }}>
         <CardContent>
-            <Box sx={{ display: 'flex', alignItems: 'center', marginBottom: 4}}>
-                <Typography variant="h6">Average Ratings</Typography>
+            <Typography variant="h6" gutterBottom>
+                Reviews
+            </Typography>
+            <Box sx={{ display: 'flex', alignItems: 'center', marginBottom: 4}}>                
                 <Grid container spacing={2}>
-                    <Grid item xs={3}>
-                    <Typography>Office Staff: {averageRatings.officeStaff}</Typography>
+                    <Grid item xs={12} sm={3}>
+                    <Typography>Overall Office Staff: {averageRatings.officeStaff}</Typography>
                     <Rating value={parseFloat(averageRatings.officeStaff)} readOnly />
                     </Grid>
-                    <Grid item xs={3}>
-                    <Typography>Wait Time: {averageRatings.waitTime}</Typography>
+                    <Grid item xs={12} sm={3}>
+                    <Typography>Overall Wait Time: {averageRatings.waitTime}</Typography>
                     <Rating value={parseFloat(averageRatings.waitTime)} readOnly />
                     </Grid>
-                    <Grid item xs={3}>
-                    <Typography>Care Provided: {averageRatings.careProvided}</Typography>
+                    <Grid item xs={12} sm={3}>
+                    <Typography>Overall Care Provided: {averageRatings.careProvided}</Typography>
                     <Rating value={parseFloat(averageRatings.careProvided)} readOnly />
                     </Grid>
-                    <Grid item xs={3}>
+                    <Grid item xs={12} sm={3}>
                     <Typography>Overall Experience: {averageRatings.overallExperience}</Typography>
                     <Rating value={parseFloat(averageRatings.overallExperience)} readOnly />
                     </Grid>
@@ -174,19 +176,19 @@ const Reviews = () => {
                             secondary={
                             <>
                                 <Grid container spacing={2}>
-                                <Grid item xs={3}>
+                                <Grid item xs={12} sm={3}>
                                     <Typography>Office Staff: {review.ratings.officeStaff}</Typography>
                                     <Rating value={review.ratings.officeStaff} readOnly />
                                 </Grid>
-                                <Grid item xs={3}>
+                                <Grid item xs={12} sm={3}>
                                     <Typography>Wait Time: {review.ratings.waitTime}</Typography>
                                     <Rating value={review.ratings.waitTime} readOnly />
                                 </Grid>
-                                <Grid item xs={3}>
+                                <Grid item xs={12} sm={3}>
                                     <Typography>Care Provided: {review.ratings.careProvided}</Typography>
                                     <Rating value={review.ratings.careProvided} readOnly />
                                 </Grid>
-                                <Grid item xs={3}>
+                                <Grid item xs={12} sm={3}>
                                     <Typography>Overall Experience: {review.ratings.overallExperience}</Typography>
                                     <Rating value={review.ratings.overallExperience} readOnly />
                                 </Grid>

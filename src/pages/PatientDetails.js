@@ -36,7 +36,7 @@ const PatientDetails = () => {
     appointments: [
       { id: 1, date: '2024-08-01', type: 'routine', reason: 'Check-up', notes: 'No medication prescribed' },
       { id: 2, date: '2024-07-01', type: 'blood', reason: 'Blood Work', notes: 'Needed blood work for lingering fatigue, ended up fine' },
-      { id: 3, date: '2024-06-01', type: 'emergency', reason: 'Broken Arm', notes: 'Put a cast on and sent on his way' },
+      { id: 0, date: '2024-06-01', type: 'emergency', reason: 'Broken Arm', notes: 'Put a cast on and sent on his way' },
       { id: 4, date: '2024-06-01', type: 'telehealth', reason: 'Video Conference', notes: 'Discuss a few symptoms via video call' },
     ]
   };

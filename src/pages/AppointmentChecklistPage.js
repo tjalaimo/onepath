@@ -34,8 +34,6 @@ const appointmentList = [{
 
 const AppointmentChecklistPage = () => {
   const { id } = useParams();
-  console.log(id);
-  console.log(appointmentList[id]);
   const appointmentData = appointmentList[id] ? appointmentList[id] : appointmentList[0];
   const [questions, setQuestions] = useState(appointmentData.questions);
   const [newQuestion, setNewQuestion] = useState('');
