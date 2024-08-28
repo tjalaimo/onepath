@@ -30,6 +30,7 @@ import ForumPostPage from './pages/ForumPostPage';
 import FormsPage from './pages/FormsPage';
 import FormPage from './pages/FormPage';
 import AppointmentDetailPage from './pages/AppointmentDetailPage';
+import AppointmentChecklistPage from './pages/AppointmentChecklistPage';
 
 import { AuthProvider } from './context/AuthContext';
 
@@ -65,6 +66,7 @@ function App() {
               <Route path="/calendar" element={<CalendarPage />} />
               <Route path="/help" element={<HelpPage />} />     
               <Route path="/profile/:id" element={<ProfilePage />} />
+              <Route path="/appointmentchecklist/:id" element={<AppointmentChecklistPage />} />
 
               {/* provider specific */}
               <Route  path="/provider/home" element={<ProviderHome />} />

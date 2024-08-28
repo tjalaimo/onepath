@@ -4,9 +4,11 @@ import BloodtypeIcon from '@mui/icons-material/Bloodtype';
 import EmergencyShareIcon from '@mui/icons-material/EmergencyShare';
 import VideocamIcon from '@mui/icons-material/Videocam';
 import HealingIcon from '@mui/icons-material/Healing';
+import PlaylistAddCheckCircleIcon from '@mui/icons-material/PlaylistAddCheckCircle';
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import ScheduleAppointmentModal from '../modals/ScheduleAppointmentModal';
+
 import moment from 'moment';
 import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router';
@@ -110,7 +112,12 @@ const PatientDetails = () => {
                         <Typography variant="h6" sx={{ mb: 2 }}>Patient Notes</Typography>
                         <List>
                             {notes.map((note, index) => (
-                                <ListItem key={index}>{note}</ListItem>                              
+                                <ListItem key={index}>
+                                    <PlaylistAddCheckCircleIcon color="primary" />
+                                    <Box sx={{ ml:2 }}>
+                                        <Typography variant="subtitle1">{note}</Typography>
+                                    </Box>
+                                </ListItem>
                             ))}
                         </List>
                         <Button variant="contained" onClick={() => setOpenNoteModal(true)}>Add Note</Button>

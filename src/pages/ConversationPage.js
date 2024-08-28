@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Box, Typography, Avatar, TextField, Grid, Paper, IconButton, List, ListItem, ListItemAvatar, ListItemText } from '@mui/material';
+import { Box, Typography, Avatar, TextField, Grid, Paper, IconButton, List, ListItem, ListItemAvatar, ListItemText, Button} from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 const initialMessages = [
   { id: 1, user: 'Alice Smith', avatar: 'https://i.pravatar.cc/150?img=1', message: 'Hey! How are you?', isOwn: false },
@@ -37,9 +38,17 @@ const ConversationPage = () => {
           }}
         >
           <Box sx={{ padding: 3 }}>
-            <Typography variant="h6" gutterBottom>
-              Alice Smith
-            </Typography>
+            <Grid container>  
+              <Grid item xs={3} sm={2}>
+                <Button variant="outlined" sx={{ mb: 1 }} onClick={ () => { window.history.back() }}><ArrowBackIcon /></Button>  
+              </Grid>
+              <Grid item>
+                <Typography variant="h6" gutterBottom>
+                  Alice Smith
+                </Typography>
+              </Grid>
+            </Grid>
+            
             <List sx={{ marginBottom: 2 }}>
               {messages.map((msg) => (
                 <ListItem key={msg.id} sx={{ justifyContent: msg.isOwn ? 'flex-end' : 'flex-start' }}>

@@ -10,7 +10,16 @@ import SearchIcon from '@mui/icons-material/Search';
 const LeadsAndRequests = () => {
   const navigate = useNavigate();
   
-
+  const handleEventClick = (id, type) => {
+    console.log(id, type);
+    if (type === 'Appointment Request') {
+      navigate(`/appointmentchecklist/${id}`);
+    } else if (type === 'Message Request') {
+      navigate(`/messages/${id}`);
+    }else {
+      return;
+    }
+  }
   const allRequests = [
     { id: 1, user: 'John Doe', type: 'Message Request', timestamp: '2024-09-01', description: 'Asking about flu symptoms.', icon: <MessageIcon color="primary" />},
     { id: 2, user: 'Jane Smith', type: 'Appointment Request', timestamp: '2024-08-31', description: 'Requesting a general checkup.', icon: <CalendarMonthIcon color="primary" /> },
@@ -73,7 +82,7 @@ const LeadsAndRequests = () => {
 
         {displayedRequests.map((request, index) => (
           <Box key={index}>
-            <ListItem button component="a" onClick={() => navigate(`#`)}>
+            <ListItem button component="a" onClick={() => handleEventClick(request.id, request.type)}>
               {request.icon}
               <Box sx={{ ml:2 }}>                      
                 <ListItemText
@@ -96,11 +105,11 @@ const LeadsAndRequests = () => {
         ))}
         {/* Pagination */}
         <Pagination
-                count={Math.ceil(filteredRequests.length / itemsPerPage)}
-                page={currentPage}
-                onChange={handlePageChange}
-                sx={{ marginTop: 2, mx: 'auto' }}
-              />
+          count={Math.ceil(filteredRequests.length / itemsPerPage)}
+          page={currentPage}
+          onChange={handlePageChange}
+          sx={{ marginTop: 2, mx: 'auto' }}
+        />
    
     </div>
   );

@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import PostAddIcon from '@mui/icons-material/PostAdd';
 import KeyIcon from '@mui/icons-material/Key';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
-import DirectionsRunIcon from '@mui/icons-material/DirectionsRun';
+import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
 
 import Events from '../components/Events';
 import GenAccessCodesModal from '../modals/GenAccessCodesModal';
@@ -90,8 +90,8 @@ const Home = () => {
                   <Button variant="contained" color="info" sx={{ marginLeft: 1 }} onClick={handleOpenCreateEventModal} >
                       <CalendarMonthIcon />{!isMobile ? 'New Event' : ''}
                   </Button>
-                  <Button variant="contained" color="success" sx={{ marginLeft: 1 }} onClick={ () => { navigate('/provider/patientlist') }}>
-                      <DirectionsRunIcon />{!isMobile ? 'Patients' : ''}
+                  <Button variant="contained" color="success" sx={{ marginLeft: 1 }} onClick={ () => { navigate('/providers') }}>
+                      <LocalHospitalIcon />{!isMobile ? 'Providers' : ''}
                   </Button>
               </CardContent>
           </Card>

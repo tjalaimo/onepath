@@ -7,11 +7,19 @@ import BloodtypeIcon from '@mui/icons-material/Bloodtype';
 import { useNavigate } from 'react-router-dom';
 
 const events = [
-  { title: 'Doctor Appointment', description: 'Take mom to dr', timestamp: '2024-09-01', icon: <LocalHospitalIcon color="primary" /> },
-  { title: 'Medication Refill', description: 'Dad refill meds', timestamp: '2024-08-25', icon: <LocalPharmacyIcon color="primary" /> },
-  { title: 'Flu Shot', description: 'Family needs flu shot', timestamp: '2024-09-25', icon: <VaccinesIcon color="primary" /> },
-  { title: 'Blood Test', description: 'Tj to quest for blood test', timestamp: '2024-09-25', icon: <BloodtypeIcon color="primary" /> },
+  { id: 1, type:'appointment', title: 'Doctor Appointment', description: 'Take mom to dr', timestamp: '2024-09-01', icon: <LocalHospitalIcon color="primary" /> },
+  { id: 2, type:'medicationrefill', title: 'Medication Refill', description: 'Dad refill meds', timestamp: '2024-08-25', icon: <LocalPharmacyIcon color="primary" /> },
+  { id: 3, type:'vaccine', title: 'Flu Shot', description: 'Family needs flu shot', timestamp: '2024-09-25', icon: <VaccinesIcon color="primary" /> },
+  { id: 4, type:'test', title: 'Blood Test', description: 'Tj to quest for blood test', timestamp: '2024-09-25', icon: <BloodtypeIcon color="primary" /> },
 ];
+
+const getEventLink = (id, type) => {
+  if (type === 'appointment') {
+    return `/appointmentchecklist/${id}`;
+  } else {
+    return '#'
+  }
+}
 
 const Events = () => {
   const navigate = useNavigate();
@@ -24,7 +32,7 @@ const Events = () => {
 
         {events.map((event, index) => (
           <Box key={index}>
-            <ListItem button component="a" onClick={() => navigate(`#`)}>
+            <ListItem button component="a" onClick={() => navigate(getEventLink(event.id, event.type))}>
               {event.icon}
               <Box sx={{ ml:2 }}>                      
                 <ListItemText

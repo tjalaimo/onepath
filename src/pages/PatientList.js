@@ -74,8 +74,8 @@ const PatientList = () => {
         />
 
         <List>
-            {paginatedPatients.map((patient) => (
-                <Card sx={{ marginBottom: 4 }}>
+            {paginatedPatients.map((patient, index) => (
+                <Card sx={{ marginBottom: 4 }} key={index}>
                     <CardContent>
                         <Box sx={{ display: 'flex', alignItems: 'center', marginBottom: 2 }}>                            
                             <Avatar

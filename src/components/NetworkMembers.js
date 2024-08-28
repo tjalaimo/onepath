@@ -2,12 +2,12 @@ import React from 'react';
 import { Avatar, Box, Grid, Typography, Card, CardContent } from '@mui/material';
 
 const members = [
-  { name: 'Alice Smith', avatar: 'https://i.pravatar.cc/150?img=1' },
-  { name: 'Bob Johnson', avatar: 'https://i.pravatar.cc/150?img=2' },
-  { name: 'Greg Smith', avatar: 'https://i.pravatar.cc/150?img=3' },
-  { name: 'Dan Sterns', avatar: 'https://i.pravatar.cc/150?img=4' },
-  { name: 'Ben Boston', avatar: 'https://i.pravatar.cc/150?img=5' },
-  { name: 'Jimmy Peters', avatar: 'https://i.pravatar.cc/150?img=6' }
+  { name: 'Alice Alaimo', avatar: 'https://i.pravatar.cc/150?img=1' },
+  { name: 'Bob Alaimo', avatar: 'https://i.pravatar.cc/150?img=2' },
+  { name: 'Greg Alaimo', avatar: 'https://i.pravatar.cc/150?img=3' },
+  { name: 'Dan Alaimo', avatar: 'https://i.pravatar.cc/150?img=4' },
+  { name: 'Ben Alaimo', avatar: 'https://i.pravatar.cc/150?img=5' },
+  { name: 'Jimmy Alaimo', avatar: 'https://i.pravatar.cc/150?img=6' }
 ];
 
 const NetworkMembers = () => {
