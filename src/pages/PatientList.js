@@ -129,7 +129,7 @@ const PatientList = () => {
             sx={{ mt: 2 }}
         />
 
-            <ScheduleAppointmentModal open={openScheduleAppointmentModal} onClose={handleCloseScheduleAppointmentModal} />
+        <ScheduleAppointmentModal open={openScheduleAppointmentModal} onClose={handleCloseScheduleAppointmentModal} />
       </Grid>
     </Grid>
   );

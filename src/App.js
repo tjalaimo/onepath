@@ -32,6 +32,7 @@ import FormPage from './pages/FormPage';
 import AppointmentDetailPage from './pages/AppointmentDetailPage';
 import AppointmentChecklistPage from './pages/AppointmentChecklistPage';
 import ProviderProfilePage from './pages/ProviderProfilePage';
+import PatientCheckIn from './pages/PatientCheckIn';
 
 import { AuthProvider } from './context/AuthContext';
 
@@ -68,6 +69,7 @@ function App() {
               <Route path="/help" element={<HelpPage />} />     
               <Route path="/profile/:id" element={<ProfilePage />} />
               <Route path="/appointmentchecklist/:id" element={<AppointmentChecklistPage />} />
+              <Route path="/appointmentcheckin/:id" element={<PatientCheckIn />} />
 
               {/* provider specific */}
               <Route  path="/provider/home" element={<ProviderHome />} />

@@ -1,6 +1,7 @@
 import React, { useState} from 'react';
 import { useParams } from 'react-router-dom';
 import { Box, Typography, Avatar, Chip, Grid, Card, CardContent, List, ListItem, ListItemText, Divider, Button, Rating, TextField } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import PlaylistAddCheckCircleIcon from '@mui/icons-material/PlaylistAddCheckCircle';
@@ -77,6 +78,7 @@ const appointments = [
 
 const AppointmentDetailPage = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [comment, setComment] = useState('');
   const appointment = appointments[id] ? appointments[id] : appointments[1];
 
@@ -135,9 +137,9 @@ const AppointmentDetailPage = () => {
             {!appointmentDetails.isComplete ? (
                   <Grid container>
                       <Grid item xs={6}>
-                          <Button variant="contained" color="primary" sx={{ marginBottom: 2 }}>
-                              Confirm
-                          </Button>
+                        <Button variant="contained" color="primary" sx={{ marginBottom: 2 }} onClick={() => navigate(`/appointmentcheckin/${id}`)}>
+                            Check In
+                        </Button>
                       </Grid>
                       <Grid item xs={6} justifyContent={'flex-end'}>
                           <Button variant="contained" color="primary" sx={{ marginBottom: 2 }}>

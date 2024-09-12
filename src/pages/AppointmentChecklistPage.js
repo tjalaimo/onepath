@@ -7,6 +7,7 @@ import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import PlaylistAddCheckCircleIcon from '@mui/icons-material/PlaylistAddCheckCircle';
 import WriteReview from '../components/WriteReview';
+import { useNavigate } from 'react-router-dom';
 
 const appointmentList = [{
         date: '2024-09-01 14:00',
@@ -33,6 +34,7 @@ const appointmentList = [{
 ];
 
 const AppointmentChecklistPage = () => {
+  const navigate = useNavigate();
   const { id } = useParams();
   const appointmentData = appointmentList[id] ? appointmentList[id] : appointmentList[0];
   const [questions, setQuestions] = useState(appointmentData.questions);
@@ -85,8 +87,8 @@ const AppointmentChecklistPage = () => {
                             {!appointmentData.isComplete ? (
                                 <Grid container>
                                     <Grid item xs={6}>
-                                        <Button variant="contained" color="primary" sx={{ marginBottom: 2 }}>
-                                            Confirm
+                                        <Button variant="contained" color="primary" sx={{ marginBottom: 2 }} onClick={() => navigate(`/appointmentcheckin/${id}`)}>
+                                            Check In
                                         </Button>
                                     </Grid>
                                     <Grid item xs={6} justifyContent={'flex-end'}>
